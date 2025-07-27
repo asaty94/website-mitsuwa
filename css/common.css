@@ -1,0 +1,181 @@
+* { box-sizing: border-box; }
+/* ############
+### 基本タグ ###
+############### */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif;
+    background-color: #fff;
+    color: #003366;
+    line-height: 1.6;
+}
+main {
+    max-width: 960px;
+    margin: 80px auto 60px;
+    padding: 0 16px;
+}
+section { margin-bottom: 80px; }
+p {
+    font-size: 1rem;
+    margin-bottom: 16px;
+    font-weight: 600;
+    color: #000;
+}
+
+/* ###########
+### 見出し ###
+############## */
+h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    position: relative;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    margin: 3rem 0 1.5rem;
+}
+h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 100%;
+    height: 4px;
+    background-color: #ccc;
+}
+
+h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #000;
+    margin: 2.5rem 0 1.5rem;
+    position: relative;
+    padding-left: 1rem;
+    line-height: 1.2;
+}
+h3::before {
+    content: "";
+    position: absolute;
+    top: 50%; left: 0;
+    transform: translateY(-50%);
+    width: 6px; height: 100%;
+    background: #0059b3;
+    border-radius: 3px;
+}
+h4 {
+    font-size: 1.2rem;
+    color: #000;
+    margin: 1.5rem 0 .75rem;
+}
+
+/* ###################
+### ヘッダーメニュー ###
+###################### */
+header {
+    background-color: #003366;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+header.scrolled { 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15); 
+}
+.header-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    padding: 0 16px;
+}
+.header-inner .logo {
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.5rem;
+    white-space: nowrap;
+}
+.header-inner .logo a{
+    display: block;
+    padding: 18px 6px;
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none; 
+}
+nav ul {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+nav li { position: relative; }
+nav a {
+    display: block;
+    padding: 18px 6px;
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none; 
+}
+nav li:hover > a { background-color: #004080; }
+nav ul ul {
+    display: none;
+    position: absolute;
+    top: 60px; left: 0;
+    background-color: #004080;
+    border-radius: 0 0 6px 6px;
+    min-width: 160px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    z-index: 1100;
+}
+nav ul li:hover > ul { display: block; }
+nav ul ul li a {
+    padding: 10px 16px;
+    white-space: nowrap;
+    font-weight: 400;
+}
+nav ul ul li a:hover { background-color: #0059b3; }
+
+/* #############
+### フッター ###
+################ */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+.site-footer {
+    background-color: #003366;
+    color: #fff;
+}
+.footer-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.footer-privacy {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+}
+.footer-privacy a {
+    color: #fff;
+    text-decoration: underline;
+}
+.footer-company {
+    font-weight: 700;
+}
+.footer-copy {
+    width: 100%;
+    margin-top: 8px;
+    font-size: 0.75rem;
+    text-align: left;
+}
