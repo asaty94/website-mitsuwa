@@ -1,4 +1,6 @@
+/* 基本リセット */
 * { box-sizing: border-box; }
+
 /* ############
 ### 基本タグ ###
 ############### */
@@ -26,12 +28,15 @@ p {
 /* ###########
 ### 見出し ###
 ############## */
-h2 {
-    font-size: 1.5rem;
+h2, h3, h4 {
+    color: #000;
     font-weight: bold;
     position: relative;
-    padding-bottom: 1rem;
     padding-left: 1rem;
+}
+h2 {
+    font-size: 1.5rem;
+    padding-bottom: 1rem;
     margin: 3rem 0 1.5rem;
 }
 h2::after {
@@ -43,14 +48,10 @@ h2::after {
     height: 4px;
     background-color: #ccc;
 }
-
 h3 {
     font-size: 1.75rem;
     font-weight: 700;
-    color: #000;
     margin: 2.5rem 0 1.5rem;
-    position: relative;
-    padding-left: 1rem;
     line-height: 1.2;
 }
 h3::before {
@@ -64,8 +65,8 @@ h3::before {
 }
 h4 {
     font-size: 1.2rem;
-    color: #000;
     margin: 1.5rem 0 .75rem;
+    font-weight: bold;
 }
 
 /* ###################
@@ -90,7 +91,8 @@ header.scrolled {
     height: 60px;
     padding: 0 16px;
 }
-.header-inner .logo {
+.header-inner .logo,
+.footer-company {
     color: #fff;
     font-weight: 700;
     font-size: 1.5rem;
@@ -142,14 +144,15 @@ nav ul ul li a:hover { background-color: #0059b3; }
 /* #############
 ### フッター ###
 ################ */
-footer {
+footer,
+.site-footer {
     text-align: center;
     padding: 20px 0;
     color: #666;
     font-size: 0.9rem;
+    background-color: #003366;
 }
 .site-footer {
-    background-color: #003366;
     color: #fff;
 }
 .footer-inner {
@@ -169,9 +172,6 @@ footer {
 .footer-privacy a {
     color: #fff;
     text-decoration: underline;
-}
-.footer-company {
-    font-weight: 700;
 }
 .footer-copy {
     width: 100%;
