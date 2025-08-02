@@ -88,7 +88,7 @@ header.scrolled {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 60px;
+    height: 68px;
     padding: 0 16px;
 }
 .header-inner .logo,
@@ -100,7 +100,7 @@ header.scrolled {
 }
 .header-inner .logo a{
     display: block;
-    padding: 18px 6px;
+    padding: 1px 6px;
     color: #fff;
     font-weight: 500;
     cursor: pointer;
@@ -347,5 +347,51 @@ footer,
   .image-container img {
     width: 100%;
     max-width: 100vw;
+  }
+}
+
+/* ロゴとキャッチフレーズのレイアウト */
+.logo-area {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: -8px; 
+  /* gapを使わず、個別にマージン調整 */
+}
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  margin-bottom: 0; /* 余計な下マージンを消す */
+}
+.catchphrase.subtle-catchphrase {
+  font-size: 0.85rem;
+  color: #e0e0e0;
+  font-weight: 400;
+  margin: 0 0 0 2px; /* 上下マージン0、左だけ少し */
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+/* PC・スマホ共通で縦並び */
+@media (min-width: 600px) {
+  .logo-area {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .catchphrase.subtle-catchphrase {
+    font-size: 0.9rem;
+    margin: 0 0 0 0;
+  }
+}
+@media (max-width: 599px) {
+  .logo-area {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .catchphrase.subtle-catchphrase {
+    font-size: 0.8rem;
+    margin: 0;
   }
 }
