@@ -88,7 +88,7 @@ header.scrolled {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 68px;
+    height: 76px; /* 少し高めに */
     padding: 0 16px;
 }
 .header-inner .logo,
@@ -100,7 +100,7 @@ header.scrolled {
 }
 .header-inner .logo a{
     display: block;
-    padding: 1px 6px;
+    padding: 8px 6px;
     color: #fff;
     font-weight: 500;
     cursor: pointer;
@@ -140,6 +140,56 @@ nav ul ul li a {
     font-weight: 400;
 }
 nav ul ul li a:hover { background-color: #0059b3; }
+
+/* ロゴとキャッチフレーズのレイアウト */
+.logo-area {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100%;
+    margin-top: -8px; /* 少し上寄せ */
+}
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    white-space: nowrap;
+    margin-bottom: 2px;
+}
+.catchphrase.subtle-catchphrase {
+    font-size: 0.85rem;
+    color: #e0e0e0 !important;
+    font-weight: 400;
+    margin: 0;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    text-shadow: 0 0 2px #003366, 0 0 4px #003366;
+}
+
+/* PC・スマホ共通で縦並び */
+@media (min-width: 600px) {
+  .logo-area {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: -8px;
+  }
+  .catchphrase.subtle-catchphrase {
+    font-size: 0.9rem;
+    margin: 0;
+  }
+}
+@media (max-width: 599px) {
+  .logo-area {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: -8px;
+  }
+  .catchphrase.subtle-catchphrase {
+    font-size: 0.8rem;
+    margin: 0;
+  }
+}
 
 /* #############
 ### フッター ###
@@ -190,26 +240,30 @@ footer,
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
+    padding: 0;
 }
 .image-container img {
     width: 100%;
     height: auto;
     display: block;
+    max-width: 100%;
 }
 .image-container .overlay {
     position: absolute;
-    top: 60%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 90%;
-    max-width: 1400px;
-    padding: 0 20px;
+    max-width: 1000px;
+    min-width: 0;
+    font-size: 2rem;
+    padding: 0;
+    word-break: break-word;
+    border-radius: 0;
+    text-shadow: 0 0 2px #003366, 0 0 4px #003366;
     box-sizing: border-box;
     text-align: center;
-    font-size: 22px;
-    color: #000;
-    text-shadow: 0 0 5px rgba(0,0,0,0.7);
-    word-break: break-word;
+    background: none; /* 背景色を消す */
 }
 .image-container .large-text-top {
     font-size: 2rem;
@@ -217,7 +271,7 @@ footer,
     color: red;
 }
 
-/* スマホ対応 */
+/* PC幅縮小時 */
 @media (max-width: 1000px) {
   .header-inner, .footer-inner, main {
     max-width: 100vw;
@@ -231,6 +285,8 @@ footer,
     padding: 0 8px;
   }
 }
+
+/* スマホ対応 */
 @media (max-width: 600px) {
   .image-container {
     width: 100%;
@@ -247,17 +303,24 @@ footer,
     display: block;
   }
   .image-container .overlay {
-    font-size: 1rem;
-    padding: 0 4px;
-    width: 98%;
+    position: absolute;
+    top: 50%;
     left: 50%;
-    top: 55%;
     transform: translate(-50%, -50%);
-    max-width: 98vw;
+    width: 96vw;
+    max-width: 96vw;
+    font-size: 1.05rem;
+    padding: 0 2vw;
+    min-width: 0;
     word-break: break-word;
+    border-radius: 0;
+    text-shadow: 0 0 2px #003366, 0 0 4px #003366;
+    box-sizing: border-box;
+    text-align: center;
+    background: none;
   }
   .image-container .large-text-top {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     line-height: 1.3;
   }
   main {
@@ -318,80 +381,3 @@ footer,
   .card-modern {
     margin-bottom: 20px;
   }
-}
-
-/* 画像コンテナをmainと同じ幅にする */
-.image-container {
-  margin-top: 60px;
-  width: 100%;
-  max-width: 960px;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-  padding: 0;
-}
-.image-container img {
-  width: 100%;
-  height: auto;
-  display: block;
-  max-width: 100%;
-}
-
-/* スマホ対応 */
-@media (max-width: 600px) {
-  .image-container {
-    margin-top: 48px;
-    max-width: 100vw;
-    padding: 0 4px;
-  }
-  .image-container img {
-    width: 100%;
-    max-width: 100vw;
-  }
-}
-
-/* ロゴとキャッチフレーズのレイアウト */
-.logo-area {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-top: -8px; 
-  /* gapを使わず、個別にマージン調整 */
-}
-.logo {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #fff;
-  white-space: nowrap;
-  margin-bottom: 0; /* 余計な下マージンを消す */
-}
-.catchphrase.subtle-catchphrase {
-  font-size: 0.85rem;
-  color: #e0e0e0;
-  font-weight: 400;
-  margin: 0 0 0 2px; /* 上下マージン0、左だけ少し */
-  letter-spacing: 0.02em;
-  line-height: 1.2;
-}
-
-/* PC・スマホ共通で縦並び */
-@media (min-width: 600px) {
-  .logo-area {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .catchphrase.subtle-catchphrase {
-    font-size: 0.9rem;
-    margin: 0 0 0 0;
-  }
-}
-@media (max-width: 599px) {
-  .logo-area {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .catchphrase.subtle-catchphrase {
-    font-size: 0.8rem;
-    margin: 0;
-  }
-}
