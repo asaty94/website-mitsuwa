@@ -463,3 +463,85 @@ footer,
     max-height: 200px;
   }
 }
+
+/* ==== 固定ヘッダーの重なり対策（幅に応じて自動調整） ==== */
+:root {
+  --header-h: 76px;   /* デスクトップのヘッダー高さ */
+}
+
+@media (max-width: 600px) {
+  :root {
+    --header-h: 64px; /* スマホ時のヘッダー高さ（必要に応じて微調整） */
+  }
+}
+
+/* 本文先頭に常にヘッダー分の余白を確保 */
+body {
+  padding-top: var(--header-h);
+}
+
+/* アンカー（id付き要素）へスクロールする時もヘッダー分だけ下げる */
+[id] {
+  scroll-margin-top: var(--header-h);
+}
+
+/* ヘッダーの実高さも変数に合わせる（高さが自動で変わる事故を防止） */
+.header-inner {
+  height: var(--header-h);
+}
+
+/* ヒーロー画像の上マージンは最小限にして被りを回避（任意） */
+.image-container {
+  margin-top: 16px; /* 以前に大きい値を入れていた場合は小さめに */
+}
+
+@media (max-width: 600px) {
+  .image-container {
+    margin-top: 12px;
+  }
+}
+
+/* === ヘッダー溢れ対策（上書き） === */
+.header-inner{
+  height: auto;              /* 固定をやめる */
+  min-height: var(--header-h); /* 最低高さだけ担保 */
+}
+
+/* メニューを折り返せるように */
+nav ul{
+  flex-wrap: wrap;
+}
+
+/* スマホ調整 */
+@media (max-width: 600px){
+  .header-inner{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 8px;           /* 多少ゆとり */
+  }
+  nav{ width: 100%; }
+  nav ul{
+    justify-content: flex-start;
+    gap: 12px;
+  }
+  nav a{
+    padding: 10px 6px;      /* 行の高さを抑える */
+    font-size: 0.95rem;     /* 文字も少しだけ縮小 */
+  }
+}
+
+/* === ヘッダー重なり完全対策（最優先で上書き） === */
+
+/* ヘッダーの実高さを常に本文オフセットに反映 */
+body {
+  padding-top: 0 !important; /* まずリセット */
+}
+main, .image-container, .promo-photo {
+  margin-top: calc(var(--header-h) + 12px) !important;
+}
+
+/* ヘッダー高さを動的に反映する */
+@media (max-width: 600px) {
+  :root { --header-h: 88px; }  /* スマホ時に高めに確保 */
+}
