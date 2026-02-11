@@ -2,6 +2,16 @@ import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import handlebars from 'vite-plugin-handlebars';
 
+// publicディレクトリのパスにbaseを付与するプラグイン
+function publicBasePlugin(base) {
+  return {
+    name: 'public-base',
+    transformIndexHtml(html) {
+      return html.replace(/(src|href)="\/image\//g, `$1="${base}image/`);
+    },
+  };
+}
+
 export default defineConfig({
   // GitHub Pages用ベースパス
   base: '/website-mitsuwa/',
@@ -24,11 +34,11 @@ export default defineConfig({
     },
   },
 
-  // Handlebarsプラグイン: パーシャル（部品）をHTMLに埋め込む
+  // プラグイン
   plugins: [
     handlebars({
-      // パーシャルの場所
       partialDirectory: resolve(__dirname, 'src/partials'),
     }),
+    publicBasePlugin('/website-mitsuwa/'),
   ],
 });
