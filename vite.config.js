@@ -2,10 +2,11 @@ import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import handlebars from 'vite-plugin-handlebars';
 
-// publicディレクトリのパスにbaseを付与するプラグイン
+// publicディレクトリのパスにbaseを付与するプラグイン（ビルド時のみ）
 function publicBasePlugin(base) {
   return {
     name: 'public-base',
+    apply: 'build',
     transformIndexHtml(html) {
       return html.replace(/(src|href)="\/image\//g, `$1="${base}image/`);
     },
@@ -13,8 +14,8 @@ function publicBasePlugin(base) {
 }
 
 export default defineConfig({
-  // GitHub Pages用ベースパス
-  base: '/website-mitsuwa/',
+  // GitHub Pages用ベースパス（ビルド時のみ適用、開発時は /）
+  base: process.env.NODE_ENV === 'production' ? '/website-mitsuwa/' : '/',
 
   // ソースファイルの場所
   root: 'src',
