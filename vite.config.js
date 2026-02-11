@@ -3,6 +3,9 @@ import { defineConfig } from 'vite';
 import handlebars from 'vite-plugin-handlebars';
 
 export default defineConfig({
+  // GitHub Pages用ベースパス
+  base: '/website-mitsuwa/',
+
   // ソースファイルの場所
   root: 'src',
 
