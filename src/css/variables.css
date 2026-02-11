@@ -1,0 +1,66 @@
+/* ==========================================
+   デザイントークン（サイト全体の設計値）
+   色やフォントを変えたい場合はここだけ変更
+   ========================================== */
+:root {
+  /* --- カラーパレット --- */
+  --color-primary: #1a365d;         /* ダークネイビー（信頼・品格） */
+  --color-primary-light: #2a4a7f;   /* ナビホバー等 */
+  --color-primary-dark: #0f2440;    /* 濃い部分 */
+  --color-accent: #2563eb;          /* アクセントブルー（ボタン等） */
+  --color-accent-hover: #1d4ed8;    /* アクセントホバー */
+  --color-accent-green: #059669;    /* メールボタン等 */
+  --color-accent-green-hover: #047857;
+
+  /* テキスト */
+  --color-text: #1e293b;            /* 本文 */
+  --color-text-secondary: #64748b;  /* 補足テキスト */
+  --color-text-light: #94a3b8;      /* 薄いテキスト */
+  --color-text-on-dark: #ffffff;    /* 暗い背景上のテキスト */
+  --color-text-on-dark-sub: #cbd5e1;/* 暗い背景上の補助テキスト */
+
+  /* 背景 */
+  --color-bg: #ffffff;
+  --color-bg-light: #f8fafc;        /* セクション交互背景 */
+  --color-bg-card: #ffffff;
+
+  /* 線 */
+  --color-border: #e2e8f0;
+  --color-border-light: #f1f5f9;
+
+  /* --- フォント --- */
+  --font-family: 'Noto Sans JP', 'Yu Gothic', 'Meiryo', sans-serif;
+  --font-size-base: 1rem;           /* 16px */
+  --font-size-sm: 0.875rem;         /* 14px */
+  --font-size-lg: 1.125rem;         /* 18px */
+  --font-size-xl: 1.5rem;           /* 24px */
+  --font-size-2xl: 2rem;            /* 32px */
+  --font-size-3xl: 2.5rem;          /* 40px */
+  --line-height: 1.8;
+
+  /* --- 余白 --- */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-2xl: 5rem;
+  --spacing-section: 6rem;          /* セクション間 */
+
+  /* --- レイアウト --- */
+  --max-width: 1100px;
+  --header-height: 72px;
+
+  /* --- 角丸・影 --- */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1);
+  --shadow-header: 0 2px 8px rgba(0, 0, 0, 0.12);
+
+  /* --- トランジション --- */
+  --transition: 0.2s ease;
+}

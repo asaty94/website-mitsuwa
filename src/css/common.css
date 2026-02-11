@@ -1,547 +1,503 @@
-/* 基本リセット */
-* { box-sizing: border-box; }
+@import url('./variables.css');
 
-/* ############
-### 基本タグ ###
-############### */
+/* ==========================================
+   ベーススタイル
+   ========================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif;
-  background-color: #fff;
-  color: #003366;
-  line-height: 1.6;
+  padding-top: var(--header-height);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height);
+  color: var(--color-text);
+  background-color: var(--color-bg);
 }
 
-main {
-  max-width: 960px;
-  margin: 80px auto 60px;
-  padding: 0 16px;
+/* アンカーリンク時にヘッダーに隠れないように */
+[id] {
+  scroll-margin-top: calc(var(--header-height) + 16px);
 }
 
-section {
-  margin-bottom: 80px;
-}
-
+/* ==========================================
+   タイポグラフィ
+   ========================================== */
 p {
-  font-size: 1rem;
-  margin-bottom: 16px;
-  font-weight: 600;
-  color: #000;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text);
+  font-weight: 400;
 }
 
-/* ###########
-### 見出し ###
-############## */
-h2,
-h3,
-h4 {
-  color: #000;
-  font-weight: bold;
-  position: relative;
-  padding-left: 1rem;
+h2, h3, h4 {
+  color: var(--color-text);
+  font-weight: 700;
+  line-height: 1.3;
 }
 
 h2 {
-  font-size: 1.5rem;
-  padding-bottom: 1rem;
-  margin: 3rem 0 1.5rem;
+  font-size: var(--font-size-2xl);
+  text-align: center;
+  margin: 0 0 var(--spacing-xl);
+  padding-bottom: var(--spacing-sm);
+  position: relative;
 }
 
+/* h2の下線デコレーション */
 h2::after {
   content: "";
-  position: absolute;
-  left: 0;
-  bottom: -8px;
-  width: 100%;
-  height: 4px;
-  background-color: #ccc;
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: var(--color-accent);
+  margin: var(--spacing-sm) auto 0;
+  border-radius: 2px;
 }
 
 h3 {
-  font-size: 1.75rem;
-  font-weight: 700;
-  margin: 2.5rem 0 1.5rem;
-  line-height: 1.2;
+  font-size: var(--font-size-xl);
+  margin: var(--spacing-xl) 0 var(--spacing-md);
+  padding-left: var(--spacing-md);
+  position: relative;
 }
 
+/* h3の左バー */
 h3::before {
   content: "";
   position: absolute;
-  top: 50%;
+  top: 0;
   left: 0;
-  transform: translateY(-50%);
-  width: 6px;
+  width: 4px;
   height: 100%;
-  background: #0059b3;
-  border-radius: 3px;
+  background: var(--color-accent);
+  border-radius: 2px;
 }
 
 h4 {
-  font-size: 1.2rem;
-  margin: 1.5rem 0 .75rem;
-  font-weight: bold;
+  font-size: var(--font-size-lg);
+  margin: var(--spacing-lg) 0 var(--spacing-sm);
 }
 
-/* ###################
-### ヘッダーメニュー ###
-###################### */
-header {
-  background-color: #003366;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+/* ==========================================
+   レイアウト
+   ========================================== */
+main {
+  max-width: var(--max-width);
+  margin: var(--spacing-xl) auto var(--spacing-2xl);
+  padding: 0 var(--spacing-md);
 }
 
-header.scrolled {
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+section {
+  margin-bottom: var(--spacing-section);
 }
 
-.header-inner {
-  max-width: 960px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 76px; /* 少し高めに */
-  padding: 0 16px;
+/* ==========================================
+   ヘッダー（Bootstrap navbarベース）
+   ========================================== */
+.site-header {
+  background-color: var(--color-primary);
+  box-shadow: var(--shadow-header);
 }
 
-.header-inner .logo,
-.footer-company {
-  color: #fff;
+.site-header .navbar-brand {
+  color: var(--color-text-on-dark) !important;
   font-weight: 700;
-  font-size: 1.5rem;
-  white-space: nowrap;
+  font-size: 1.25rem;
+  line-height: 1.3;
 }
 
-.header-inner .logo a {
+.site-header .navbar-brand .catchphrase {
   display: block;
-  padding: 8px 6px;
-  color: #fff;
-  font-weight: 500;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-nav ul {
-  display: flex;
-  gap: 24px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-nav li {
-  position: relative;
-}
-
-nav a {
-  display: block;
-  padding: 18px 6px;
-  color: #fff;
-  font-weight: 500;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-nav li:hover > a {
-  background-color: #004080;
-}
-
-nav ul ul {
-  display: none;
-  position: absolute;
-  top: 60px;
-  left: 0;
-  background-color: #004080;
-  border-radius: 0 0 6px 6px;
-  min-width: 160px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
-  z-index: 1100;
-}
-
-nav ul li:hover > ul {
-  display: block;
-}
-
-nav ul ul li a {
-  padding: 10px 16px;
-  white-space: nowrap;
+  font-size: var(--font-size-sm);
   font-weight: 400;
+  color: var(--color-text-on-dark-sub);
+  margin-top: 2px;
 }
 
-nav ul ul li a:hover {
-  background-color: #0059b3;
+.site-header .nav-link {
+  color: var(--color-text-on-dark) !important;
+  font-weight: 500;
+  padding: 0.5rem 1rem !important;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition);
 }
 
-/* ロゴとキャッチフレーズのレイアウト */
-.logo-area {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  height: 100%;
-  margin-top: -8px; /* 少し上寄せ */
+.site-header .nav-link:hover,
+.site-header .nav-link:focus {
+  background-color: var(--color-primary-light);
 }
 
-.logo {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #fff;
-  white-space: nowrap;
-  margin-bottom: 2px;
+/* ハンバーガーメニューのアイコン色 */
+.site-header .navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
-.catchphrase.subtle-catchphrase {
-  font-size: 0.85rem;
-  color: #e0e0e0 !important;
-  font-weight: 400;
-  margin: 0;
-  letter-spacing: 0.02em;
-  line-height: 1.2;
-  text-shadow: 0 0 2px #003366, 0 0 4px #003366;
+.site-header .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255,255,255,0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-/* PC・スマホ共通で縦並び */
-@media (min-width: 600px) {
-  .logo-area {
-    flex-direction: column;
-    align-items: flex-start;
-    margin-top: -8px;
-  }
-  .catchphrase.subtle-catchphrase {
-    font-size: 0.9rem;
-    margin: 0;
-  }
-}
-
-@media (max-width: 599px) {
-  .logo-area {
-    flex-direction: column;
-    align-items: flex-start;
-    margin-top: -8px;
-  }
-  .catchphrase.subtle-catchphrase {
-    font-size: 0.8rem;
-    margin: 0;
-  }
-}
-
-/* #############
-### フッター ###
-################ */
-footer,
-.site-footer {
-  text-align: center;
-  padding: 20px 0;
-  color: #666;
-  font-size: 0.9rem;
-  background-color: #003366;
-}
-
-.site-footer {
-  color: #fff;
-}
-
-.footer-inner {
-  max-width: 960px;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.footer-privacy {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-weight: 600;
-}
-
-.footer-privacy a {
-  color: #fff;
-  text-decoration: underline;
-}
-
-.footer-copy {
-  width: 100%;
-  margin-top: 8px;
-  font-size: 0.75rem;
-  text-align: left;
-}
-
-/* --- レスポンシブ対応 --- */
-
-/* 画像・トップ余白調整 */
-.image-container {
-  margin-top: 60px;
+/* ==========================================
+   ヒーローセクション
+   ========================================== */
+.hero {
   position: relative;
   width: 100%;
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0;
+  max-width: var(--max-width);
+  margin: var(--spacing-md) auto 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
 }
 
-.image-container img {
+.hero img {
+  display: block;
   width: 100%;
   height: auto;
-  display: block;
-  max-width: 100%;
 }
 
-.image-container .overlay {
+.hero-overlay {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 90%;
-  max-width: 1000px;
-  min-width: 0;
-  font-size: 2rem;
-  padding: 0;
-  word-break: break-word;
-  border-radius: 0;
-  text-shadow: 0 0 2px #003366, 0 0 4px #003366;
-  box-sizing: border-box;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  background: none; /* 背景色を消す */
+  padding: var(--spacing-lg);
+  background: linear-gradient(135deg, rgba(26, 54, 93, 0.7), rgba(26, 54, 93, 0.4));
 }
 
-.image-container .large-text-top {
-  font-size: 2rem;
+.hero-title {
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  color: var(--color-text-on-dark);
   line-height: 1.4;
-  color: red;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* PC幅縮小時 */
-@media (max-width: 1000px) {
-  .header-inner,
-  .footer-inner,
-  main {
-    max-width: 100vw;
-    padding-left: 8px;
-    padding-right: 8px;
-  }
-  .image-container {
-    width: 100%;
-    max-width: 100vw;
-    min-width: 0;
-    padding: 0 8px;
-  }
+.hero-subtitle {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-on-dark);
+  margin-top: var(--spacing-sm);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  font-weight: 400;
 }
 
-/* スマホ対応 */
-@media (max-width: 600px) {
-  .image-container {
-    width: 100%;
-    max-width: 100vw;
-    min-width: 0;
-    padding: 0;
-    margin: 48px auto 16px;
-  }
-  .image-container img {
-    width: 100%;
-    height: auto;
-    min-width: 0;
-    max-width: 100vw;
-    display: block;
-  }
-  .image-container .overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 96vw;
-    max-width: 96vw;
-    font-size: 1.05rem;
-    padding: 0 2vw;
-    min-width: 0;
-    word-break: break-word;
-    border-radius: 0;
-    text-shadow: 0 0 2px #003366, 0 0 4px #003366;
-    box-sizing: border-box;
-    text-align: center;
-    background: none;
-  }
-  .image-container .large-text-top {
-    font-size: 1.05rem;
-    line-height: 1.3;
-  }
-  main {
-    max-width: 100vw;
-    margin: 70px 0 40px;
-    padding: 0 4px;
-  }
-  section {
-    margin-bottom: 40px;
-  }
-  h2,
-  h3,
-  h4 {
-    padding-left: 0.5rem;
-    font-size: 1.1rem;
-  }
-  h2 { font-size: 1.2rem; }
-  h3 { font-size: 1.1rem; }
-  h4 { font-size: 1rem; }
-  .card-modern {
-    margin-bottom: 16px;
-  }
-  .footer-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-  .footer-company {
-    font-size: 1.1rem;
-  }
-  .footer-copy {
-    font-size: 0.7rem;
-    text-align: left;
-  }
-  .table-responsive {
-    overflow-x: auto;
-  }
-  table {
-    font-size: 0.95rem;
-    min-width: 400px;
-  }
-  .header-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    height: auto;
-    padding: 8px 4px;
-  }
-  header {
-    min-height: 48px;
-    height: auto;
-  }
-}
-
-/* Bootstrapのカラム崩れ対策 */
-@media (max-width: 768px) {
-  .row > [class^="col-"] {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
-  .card-modern {
-    margin-bottom: 20px;
-  }
-}  /* ← ここで閉じる！ */
-
-/* 看板＋犬のイメージ（PC/共通） */
-.promo-photo{
-  max-width: 920px;
-  margin: 1.75rem auto 1.25rem;
-  padding: 0 8px;
+/* ==========================================
+   プロモ写真
+   ========================================== */
+.promo-photo {
+  max-width: var(--max-width);
+  margin: var(--spacing-xl) auto;
+  padding: 0 var(--spacing-md);
   text-align: center;
 }
-.promo-photo img{
+
+.promo-photo img {
   display: inline-block;
   max-width: 100%;
-  height: auto;         /* 縦横比を維持 */
-  max-height: 500px;    /* ← 高さ上限で“デカすぎ”防止 */
-  border-radius: 12px;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
-  object-fit: contain;  /* トリミングなし */
+  height: auto;
+  max-height: 480px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  object-fit: contain;
 }
 
-/* スマホ調整 */
-@media (max-width: 600px){
-  .promo-photo{
-    max-width: 92%;
-    margin: 1.25rem auto 1rem;
-    padding: 0 6px;
-  }
-  .promo-photo img{
-    max-height: 200px;
-  }
+/* ==========================================
+   問い合わせボタン
+   ========================================== */
+.cta-text {
+  text-align: center;
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--color-text);
+  margin: var(--spacing-xl) auto var(--spacing-md);
 }
 
-/* ==== 固定ヘッダーの重なり対策（幅に応じて自動調整） ==== */
-:root {
-  --header-h: 76px;   /* デスクトップのヘッダー高さ */
-}
-
-@media (max-width: 600px) {
-  :root {
-    --header-h: 64px; /* スマホ時のヘッダー高さ（必要に応じて微調整） */
-  }
-}
-
-/* 本文先頭に常にヘッダー分の余白を確保 */
-body {
-  padding-top: var(--header-h);
-}
-
-/* アンカー（id付き要素）へスクロールする時もヘッダー分だけ下げる */
-[id] {
-  scroll-margin-top: var(--header-h);
-}
-
-/* ヘッダーの実高さも変数に合わせる（高さが自動で変わる事故を防止） */
-.header-inner {
-  height: var(--header-h);
-}
-
-/* ヒーロー画像の上マージンは最小限にして被りを回避（任意） */
-.image-container {
-  margin-top: 16px; /* 以前に大きい値を入れていた場合は小さめに */
-}
-
-@media (max-width: 600px) {
-  .image-container {
-    margin-top: 12px;
-  }
-}
-
-/* === ヘッダー溢れ対策（上書き） === */
-.header-inner{
-  height: auto;              /* 固定をやめる */
-  min-height: var(--header-h); /* 最低高さだけ担保 */
-}
-
-/* メニューを折り返せるように */
-nav ul{
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
   flex-wrap: wrap;
+  margin-bottom: var(--spacing-2xl);
 }
 
-/* スマホ調整 */
-@media (max-width: 600px){
-  .header-inner{
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: 0.875rem 2.5rem;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: var(--font-size-base);
+  text-decoration: none;
+  color: var(--color-text-on-dark);
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition), box-shadow var(--transition);
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-hover));
+}
+
+.contact-btn.mail {
+  background: linear-gradient(135deg, var(--color-accent-green), var(--color-accent-green-hover));
+}
+
+.contact-btn:hover,
+.contact-btn:focus {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  color: var(--color-text-on-dark);
+}
+
+/* ==========================================
+   製品カード
+   ========================================== */
+.card-modern {
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition);
+  background: var(--color-bg-card);
+}
+
+.card-modern:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-modern .card-img-top {
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+.btn-row {
+  display: flex;
+  gap: var(--spacing-xs);
+  margin-top: auto;
+}
+
+/* ==========================================
+   会社概要テーブル
+   ========================================== */
+.table th {
+  width: 140px;
+  white-space: nowrap;
+}
+
+/* ==========================================
+   問い合わせフォーム
+   ========================================== */
+.contact-form {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: var(--spacing-xl);
+  background: var(--color-bg-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: var(--color-primary);
+  font-size: var(--font-size-sm);
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form input[type="tel"],
+.contact-form textarea {
+  width: 100%;
+  padding: 10px 14px;
+  margin-bottom: var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-base);
+  font-family: inherit;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.contact-form .btn-submit {
+  display: block;
+  width: 100%;
+  max-width: 240px;
+  margin: var(--spacing-md) auto 0;
+  padding: 12px 24px;
+  background-color: var(--color-primary);
+  color: var(--color-text-on-dark);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+
+.contact-form .btn-submit:hover {
+  background-color: var(--color-primary-light);
+}
+
+/* ==========================================
+   Google Map
+   ========================================== */
+.map-container {
+  max-width: 720px;
+  margin: var(--spacing-md) auto 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 400px;
+  border: 0;
+  display: block;
+}
+
+/* ==========================================
+   フッター
+   ========================================== */
+.site-footer {
+  background-color: var(--color-primary-dark);
+  color: var(--color-text-on-dark-sub);
+  padding: var(--spacing-xl) 0 var(--spacing-md);
+}
+
+.site-footer .footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.site-footer .footer-company {
+  color: var(--color-text-on-dark);
+  font-weight: 700;
+  font-size: var(--font-size-lg);
+}
+
+.site-footer .footer-privacy a {
+  color: var(--color-text-on-dark-sub);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.site-footer .footer-privacy a:hover {
+  color: var(--color-text-on-dark);
+}
+
+.site-footer .footer-copy {
+  width: 100%;
+  text-align: center;
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: var(--font-size-sm);
+}
+
+/* ==========================================
+   レスポンシブ
+   ========================================== */
+
+/* タブレット */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .hero-subtitle {
+    font-size: var(--font-size-base);
+  }
+
+  .cta-text {
+    font-size: var(--font-size-lg);
+  }
+
+  .button-container {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
-    padding: 8px;           /* 多少ゆとり */
+    align-items: center;
+    gap: var(--spacing-sm);
   }
-  nav{ width: 100%; }
-  nav ul{
-    justify-content: flex-start;
-    gap: 12px;
+
+  .contact-btn {
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
   }
-  nav a{
-    padding: 10px 6px;      /* 行の高さを抑える */
-    font-size: 0.95rem;     /* 文字も少しだけ縮小 */
-  }
+
+  h2 { font-size: var(--font-size-xl); }
+  h3 { font-size: var(--font-size-lg); }
 }
 
-/* === ヘッダー重なり完全対策（最優先で上書き） === */
+/* スマホ */
+@media (max-width: 576px) {
+  body {
+    padding-top: 56px; /* Bootstrap navbarのスマホ時の高さ */
+  }
 
-/* ヘッダーの実高さを常に本文オフセットに反映 */
-body {
-  padding-top: 0 !important; /* まずリセット */
-}
-main, .image-container, .promo-photo {
-  margin-top: calc(var(--header-h) + 12px) !important;
-}
+  [id] {
+    scroll-margin-top: 72px;
+  }
 
-/* ヘッダー高さを動的に反映する */
-@media (max-width: 600px) {
-  :root { --header-h: 88px; }  /* スマホ時に高めに確保 */
+  main {
+    padding: 0 var(--spacing-sm);
+    margin-top: var(--spacing-md);
+  }
+
+  section {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .hero {
+    border-radius: 0;
+    margin-top: 0;
+  }
+
+  .hero-title {
+    font-size: var(--font-size-xl);
+  }
+
+  .hero-subtitle {
+    font-size: var(--font-size-sm);
+  }
+
+  .promo-photo img {
+    max-height: 240px;
+  }
+
+  .contact-form {
+    padding: var(--spacing-md);
+  }
+
+  .site-footer .footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .table th {
+    width: 100px;
+  }
 }
