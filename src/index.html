@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>株式会社ミツワ電子器製作所</title>
-    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="/css/common.css" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <style>
@@ -148,53 +148,26 @@
         letter-spacing: 0.03em;
       }
     </style>
-    <script>
-      // ヘッダーのスクロール時のクラス付与
-      window.addEventListener('scroll', () => {
-        const header = document.querySelector('header');
-        if (header) header.classList.toggle('scrolled', window.scrollY > 5);
-      });
-      // スムーススクロールと外部HTML読込
-      document.addEventListener('DOMContentLoaded', () => {
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-          anchor.addEventListener('click', e => {
-            e.preventDefault();
-            const target = document.querySelector(anchor.getAttribute('href'));
-            if (target) target.scrollIntoView({ behavior: 'smooth' });
-          });
-        });
-        [
-          { id: 'header-placeholder', file: 'includes/header.html' },
-          { id: 'product-trans-placeholder', file: 'includes/product-introduction-trans.html' },
-          { id: 'product-drop-placeholder', file: 'includes/product-introduction-drop.html' },
-          { id: 'footer-placeholder', file: 'includes/footer.html' }
-        ].forEach(({id, file}) => {
-          fetch(file)
-            .then(res => res.text())
-            .then(html => {
-              const el = document.getElementById(id);
-              if (el) el.innerHTML = html;
-            });
-        });
-      });
-    </script>
+    <!-- JSを外部ファイルから読み込み（fetchの代わり） -->
+    <script type="module" src="/js/main.js"></script>
   </head>
   <body>
-    <div id="header-placeholder"></div>
+    <!-- Handlebarsパーシャル: ビルド時にheader.htmlの中身がここに埋め込まれる -->
+    {{> header}}
 
     <div class="image-container">
-      <img src="image/top.png" alt="トップ">
+      <img src="/image/top.png" alt="トップ">
       <div class="overlay">
         <p class="large-text-top">
           オーダーメイドで、高品質なリニア電源を
         </p>
-        最先端電子機器の裏側を支える“縁の下のパートナー”として、未来を加速させます。<br>
+        最先端電子機器の裏側を支える"縁の下のパートナー"として、未来を加速させます。<br>
       </div>
     </div>
     <br>
 
     <div class="promo-photo">
-      <img src="image/signboardAndDog.jpeg" alt="会社の看板と犬の写真" loading="lazy">
+      <img src="/image/signboardAndDog.jpeg" alt="会社の看板と犬の写真" loading="lazy">
     </div>
 
     <p class="center-text large-text">
@@ -212,8 +185,9 @@
     <main>
       <section id="products">
         <h2>製品紹介</h2>
-        <div id="product-trans-placeholder"></div>
-        <div id="product-drop-placeholder"></div>
+        <!-- Handlebarsパーシャル: 製品紹介の各セクションがビルド時に埋め込まれる -->
+        {{> product-introduction-trans}}
+        {{> product-introduction-drop}}
       </section>
 
       <section id="company" class="container mb-5">
@@ -278,5 +252,7 @@
       </section>
     </main>
 
-    <div id="footer-placeholder"></div>
+    <!-- Handlebarsパーシャル: フッターがビルド時に埋め込まれる -->
+    {{> footer}}
   </body>
+</html>
