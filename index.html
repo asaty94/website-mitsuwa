@@ -5,88 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>株式会社ミツワ電子器製作所</title>
     <link rel="stylesheet" href="css/common.css" />
-    <!-- Google FontsからNoto Sans JPを読み込み -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet" />
-    <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-
     <style>
-      /* ###############
-      ### スクロール ###
-      ################## */
-      html {
-        scroll-behavior: smooth;
-      }
-      [id] {
-        scroll-margin-top: 80px;
-      }
-      /* ###############
-      ### ヘッダー画像 ###
-      ################## */
+      html { scroll-behavior: smooth; }
+      [id] { scroll-margin-top: 80px; }
+
       .image-container {
         position: relative;
-        width: 1000px;        /* 画像の実表示幅と合わせる（元幅×2） */
-        margin: 0 auto;       /* 中央寄せ */
+        width: 1000px;
+        margin: 0 auto;
       }
       .image-container img {
         display: block;
-        width: 100%;          /* コンテナ幅いっぱいに */
+        width: 100%;
         height: auto;
       }
-      .image-container .overlay {
-        position: absolute;
-        top: 60%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 90%;           /* コンテナ幅の 90% に制限 */
-        max-width: 1400px;    /* 必要なら上限を設定 */
-        padding: 0 20px;      /* 文字が端にくっつかないよう余白 */
-        box-sizing: border-box;
-        text-align: center;
-        font-size: 22px;
-        color: #000;
-        text-shadow: 0 0 5px rgba(0,0,0,0.7);
-        word-break: break-word;  /* 長い単語も折り返す */
-      }
-      .image-container .large-text-top{
+      .image-container .large-text-top {
         font-size: 2rem;
         line-height: 1.4;
         color: red;
       }
 
-
-      /* ####################
-      ### 問い合わせのボタン ###
-      ###################### */
-      /* ボタン共通スタイル */
+      /* 問い合わせボタン */
+      .button-container {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+      }
       .contact-btn {
-        display: inline-block;
-        padding: 0.6em 1.2em;
-        margin: 0.5em;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 2rem;
+        border-radius: 30px;
+        font-weight: 600;
         font-size: 1rem;
-        color: #fff;
-        background-color: #007BFF;
-        border: none;
-        border-radius: 4px;
         text-decoration: none;
-        text-align: center;
-        cursor: pointer;
+        color: white;
+        box-shadow: 0 4px 8px rgba(0, 51, 102, 0.2);
+        transition: background-color 0.3s, box-shadow 0.3s;
+        background: linear-gradient(135deg, #0077cc, #004a99);
       }
-      .contact-btn:hover {
-        background-color: #0056b3;
+      .contact-btn.mail {
+        background: linear-gradient(135deg, #009966, #006633);
+      }
+      .contact-btn:hover, .contact-btn:focus {
+        box-shadow: 0 6px 12px rgba(0, 51, 102, 0.35);
+        filter: brightness(1.1);
+      }
+      @media (max-width: 480px) {
+        .button-container {
+          flex-direction: column;
+          gap: 1rem;
+          max-width: 300px;
+          margin: 0 auto;
+        }
+        .contact-btn {
+          width: 100%;
+          justify-content: center;
+        }
       }
 
-    /* ボタン配置用コンテナ */
-    .button-container {
-      display: flex;
-      justify-content: center; /* 水平方向中央揃え */
-      gap: 1rem;              /* ボタン間の隙間 */
-      margin-top: 2rem;       /* 上部余白 */
-    }
-
-      /* #####################
-      ### 問い合わせフォーム ###
-      ########################*/
+      /* 問い合わせフォーム */
       form {
         max-width: 600px;
         margin: 0 auto 24px;
@@ -97,9 +80,7 @@
         font-weight: 600;
         color: #003366;
       }
-      input[type="text"],
-      input[type="email"],
-      textarea {
+      input[type="text"], input[type="email"], textarea {
         width: 100%;
         padding: 8px 10px;
         margin-bottom: 18px;
@@ -112,7 +93,7 @@
         resize: vertical;
         min-height: 120px;
       }
-      button {
+      button[type="submit"] {
         background-color: #003366;
         color: #fff;
         padding: 7px 15px 12px;
@@ -123,11 +104,9 @@
         display: block;
         margin: 0 auto;
       }
-      button:hover { background-color: #0059b3; }
+      button[type="submit"]:hover { background-color: #0059b3; }
 
-      /* ###############
-      ### Google Map ###
-      ##################*/
+      /* Google Map */
       .map-container {
         max-width: 600px;
         margin: 0 auto;
@@ -136,9 +115,7 @@
       }
       iframe { width: 100%; height: 360px; border: 0; border-radius: 6px; }
 
-      /* ##############
-      ### 製品カード ###
-      #################*/
+      /* 製品カード */
       .card-modern {
         border: none;
         border-radius: 0.75rem;
@@ -153,125 +130,58 @@
         border-top-left-radius: 0.75rem;
         border-top-right-radius: 0.75rem;
       }
-      /* ボタンを並べるコンテナ */
       .btn-row {
         display: flex;
         gap: 0.5rem;
-        margin-top: auto; /* ボタンをカード下部に固定 */
+        margin-top: auto;
       }
 
-      /* ##############
-      ### その他 ###
-      #################*/
       .center-text { text-align: center; }
-      .large-text {
-        font-size: 1.5rem;
-        line-height: 1.4;
+      .large-text { font-size: 1.5rem; line-height: 1.4; }
+      .contact-message {
+        text-align: center;
+        font-size: 1.25rem;
+        color: #003366;
+        margin: 2rem auto 3rem;
+        max-width: 600px;
+        font-weight: 600;
+        letter-spacing: 0.03em;
       }
-
-    /* #### */
-    .contact-message {
-      text-align: center;
-      font-size: 1.25rem;
-      color: #003366;
-      margin: 2rem auto 3rem;
-      max-width: 600px;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-    }
-
-    .button-container {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    .contact-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 2rem;
-      border-radius: 30px;
-      font-weight: 600;
-      font-size: 1rem;
-      text-decoration: none;
-      color: white;
-      box-shadow: 0 4px 8px rgba(0, 51, 102, 0.2);
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .contact-btn.phone {
-      background: linear-gradient(135deg, #0077cc, #004a99);
-    }
-
-    .contact-btn.mail {
-      background: linear-gradient(135deg, #009966, #006633);
-    }
-
-    .contact-btn:hover,
-    .contact-btn:focus {
-      box-shadow: 0 6px 12px rgba(0, 51, 102, 0.35);
-      filter: brightness(1.1);
-    }
-
-    @media (max-width: 480px) {
-      .button-container {
-        flex-direction: column;
-        gap: 1rem;
-        max-width: 300px;
-        margin: 0 auto;
-      }
-      .contact-btn {
-        width: 100%;
-        justify-content: center;
-      }
-    }
-   
     </style>
-
-  <script>
-    window.addEventListener('scroll', () => {
-      document.querySelector('header')
-        .classList.toggle('scrolled', window.scrollY > 5);
-    });
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', e => {
-          e.preventDefault();
-          document
-            .querySelector(anchor.getAttribute('href'))
-            .scrollIntoView({ behavior: 'smooth' });
+    <script>
+      // ヘッダーのスクロール時のクラス付与
+      window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (header) header.classList.toggle('scrolled', window.scrollY > 5);
+      });
+      // スムーススクロールと外部HTML読込
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', e => {
+            e.preventDefault();
+            const target = document.querySelector(anchor.getAttribute('href'));
+            if (target) target.scrollIntoView({ behavior: 'smooth' });
+          });
+        });
+        [
+          { id: 'header-placeholder', file: 'includes/header.html' },
+          { id: 'product-trans-placeholder', file: 'includes/product-introduction-trans.html' },
+          { id: 'product-drop-placeholder', file: 'includes/product-introduction-drop.html' },
+          { id: 'footer-placeholder', file: 'includes/footer.html' }
+        ].forEach(({id, file}) => {
+          fetch(file)
+            .then(res => res.text())
+            .then(html => {
+              const el = document.getElementById(id);
+              if (el) el.innerHTML = html;
+            });
         });
       });
-    });
-  </script>
-  </head>
-
-  <body>
-    <!-- #########################
-    ### HTMLファイルの外部呼出し ###
-    ############################## -->
-    <script>
-      fetch('includes/header.html')
-        .then(res => res.text())
-        .then(html => document.getElementById('header-placeholder').innerHTML = html);
-      fetch('includes/product_introduction.html')
-        .then(res => res.text())
-        .then(html => document.getElementById('product-introduction-placeholder').innerHTML = html);
-      fetch('includes/footer.html')
-        .then(res => res.text())
-        .then(html => document.getElementById('footer-placeholder').innerHTML = html);
     </script>
-
-    <!-- ##################
-    ### ヘッダーメニュー ###
-    ###################### -->
+  </head>
+  <body>
     <div id="header-placeholder"></div>
 
-    <!-- #########
-    ### トップ ###
-    ############## -->
     <div class="image-container">
       <img src="image/top.png" alt="トップ">
       <div class="overlay">
@@ -283,9 +193,10 @@
     </div>
     <br>
 
-    <!-- #######################
-    ### 問い合わせ(ヘッダー下) ###
-    ############################ -->
+    <div class="promo-photo">
+      <img src="image/signboardAndDog.jpeg" alt="会社の看板と犬の写真" loading="lazy">
+    </div>
+
     <p class="center-text large-text">
       最短納期にて対応いたしますので、一度、お問い合わせください。
     </p>
@@ -299,65 +210,37 @@
     </div>
 
     <main>
-      <!-- ##########
-      ### 製品紹介 ###
-      ############### -->
-      <div id="product-introduction-placeholder"></div>
+      <section id="products">
+        <h2>製品紹介</h2>
+        <div id="product-trans-placeholder"></div>
+        <div id="product-drop-placeholder"></div>
+      </section>
 
-      <!-- ##########
-      ### 会社概要 ###
-      ############### -->
-<section id="company" class="container mb-5">
-  <h2 class="text-center mb-4">会社概要</h2>
-  <div class="table-responsive">
-    <table class="table table-hover align-middle">
-      <tbody>
-        <tr>
-          <th scope="row" class="text-secondary fw-semibold">社名</th>
-          <td>株式会社ミツワ電子器製作所</td>
-        </tr>
-        <tr>
-          <th scope="row" class="text-secondary fw-semibold">設立</th>
-          <td>1977年3月</td>
-        </tr>
-        <tr>
-          <th scope="row" class="text-secondary fw-semibold">代表者</th>
-          <td>澤 能孝</td>
-        </tr>
-        <tr>
-          <th scope="row" class="text-secondary fw-semibold">資本金</th>
-          <td>1,000万円</td>
-        </tr>
-        <tr>
-          <th scope="row" class="text-secondary fw-semibold">従業員数</th>
-          <td>9名</td>
-        </tr>
-        <tr>
-          <th scope="row" class="text-secondary fw-semibold">取引銀行</th>
-          <td>
-            京都中央信用金庫 竹田支店<br>
-            京都銀行 東九条支店<br>
-            三菱東京UFJ銀行 京都中央支店
-          </td>
-        </tr>
-        <tr>
-          <th scope="row" class="text-secondary fw-semibold">電話番号</th>
-          <td>075-641-2276</td>
-        </tr>
-        <tr>
-          <th scope="row" class="text-secondary fw-semibold">FAX番号</th>
-          <td>075-642-7608</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
+      <section id="company" class="container mb-5">
+        <h2 class="text-center mb-4">会社概要</h2>
+        <div class="table-responsive">
+          <table class="table table-hover align-middle">
+            <tbody>
+              <tr><th scope="row" class="text-secondary fw-semibold">社名</th><td>株式会社ミツワ電子器製作所</td></tr>
+              <tr><th scope="row" class="text-secondary fw-semibold">設立</th><td>1977年3月</td></tr>
+              <tr><th scope="row" class="text-secondary fw-semibold">代表者</th><td>澤 能孝</td></tr>
+              <tr><th scope="row" class="text-secondary fw-semibold">資本金</th><td>1,000万円</td></tr>
+              <tr><th scope="row" class="text-secondary fw-semibold">従業員数</th><td>9名</td></tr>
+              <tr>
+                <th scope="row" class="text-secondary fw-semibold">取引銀行</th>
+                <td>
+                  京都中央信用金庫 竹田支店<br>
+                  京都銀行 東九条支店<br>
+                  三菱東京UFJ銀行 京都中央支店
+                </td>
+              </tr>
+              <tr><th scope="row" class="text-secondary fw-semibold">電話番号</th><td>075-641-2276</td></tr>
+              <tr><th scope="row" class="text-secondary fw-semibold">FAX番号</th><td>075-642-7608</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
 
-
-  
-      <!-- #######
-      ### 住所 ###
-      ############ -->
       <section id="map">
         <h2>住所</h2>
         <p class="center-text">
@@ -377,9 +260,6 @@
         </div>
       </section>
 
-      <!-- ############
-      ### 問い合わせ ###
-      ################# -->
       <section id="contact">
         <h2>問い合わせ</h2>
         <form action="#" method="post" novalidate>
@@ -398,9 +278,5 @@
       </section>
     </main>
 
-      <!-- ##########
-      ### フッター ###
-      ############### -->
     <div id="footer-placeholder"></div>
   </body>
-</html>
