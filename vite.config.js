@@ -13,12 +13,15 @@ function publicBasePlugin(base) {
   };
 }
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   // GitHub Pages用ベースパス（ビルド時のみ適用、開発時は /）
-  base: process.env.NODE_ENV === 'production' ? '/website-mitsuwa/' : '/',
+  base: command === 'build' ? '/website-mitsuwa/' : '/',
 
   // ソースファイルの場所
   root: 'src',
+
+  // publicディレクトリ（root: 'src' なのでプロジェクトルートからの相対パスを指定）
+  publicDir: '../public',
 
   // ビルド設定
   build: {
@@ -42,4 +45,4 @@ export default defineConfig({
     }),
     publicBasePlugin('/website-mitsuwa/'),
   ],
-});
+}));
