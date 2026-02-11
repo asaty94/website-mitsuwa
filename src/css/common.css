@@ -355,6 +355,64 @@ section {
   background-color: var(--color-primary-light);
 }
 
+/* バリデーション: 送信試行後のみ表示 */
+.contact-form.was-validated input:invalid,
+.contact-form.was-validated textarea:invalid {
+  border-color: #dc3545;
+}
+
+.contact-form.was-validated input:invalid:focus,
+.contact-form.was-validated textarea:invalid:focus {
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.15);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: var(--color-text-sub);
+  opacity: 0.5;
+}
+
+/* ==========================================
+   サンクスページ
+   ========================================== */
+.thanks-section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: calc(var(--header-height) + var(--spacing-2xl)) var(--spacing-md) var(--spacing-2xl);
+  text-align: center;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.thanks-section h2 {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.thanks-section p {
+  margin: var(--spacing-md) 0 var(--spacing-xl);
+  color: var(--color-text-sub);
+  line-height: 1.8;
+}
+
+.thanks-section .btn-back {
+  display: inline-block;
+  padding: 12px 32px;
+  background-color: var(--color-primary);
+  color: var(--color-text-on-dark);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  transition: background-color var(--transition);
+}
+
+.thanks-section .btn-back:hover {
+  background-color: var(--color-primary-light);
+}
+
 /* ==========================================
    Google Map
    ========================================== */

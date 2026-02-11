@@ -8,6 +8,7 @@ window.addEventListener('scroll', () => {
 // スムーススクロール
 // → ページ内リンクをクリックしたとき滑らかにスクロール
 document.addEventListener('DOMContentLoaded', () => {
+  // スムーススクロール
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', e => {
       e.preventDefault();
@@ -15,4 +16,15 @@ document.addEventListener('DOMContentLoaded', () => {
       if (target) target.scrollIntoView({ behavior: 'smooth' });
     });
   });
+
+  // フォームバリデーション表示
+  const form = document.querySelector('.contact-form form');
+  if (form) {
+    form.addEventListener('submit', e => {
+      form.parentElement.classList.add('was-validated');
+      if (!form.checkValidity()) {
+        e.preventDefault();
+      }
+    });
+  }
 });
