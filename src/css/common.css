@@ -146,51 +146,12 @@ section {
 /* ==========================================
    ヒーローセクション
    ========================================== */
-.hero {
-  position: relative;
-  width: 100%;
-  max-width: var(--max-width);
-  margin: 0 auto;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
+@keyframes heroGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-.hero img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: var(--spacing-lg);
-  background: linear-gradient(135deg, rgba(26, 54, 93, 0.7), rgba(26, 54, 93, 0.4));
-}
-
-.hero-title {
-  font-size: var(--font-size-3xl);
-  font-weight: 700;
-  color: var(--color-text-on-dark);
-  line-height: 1.4;
-  margin: 0;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.hero-subtitle {
-  font-size: var(--font-size-lg);
-  color: var(--color-text-on-dark);
-  margin-top: var(--spacing-sm);
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-  font-weight: 400;
-}
-
-/* ヒーローのフェードインアニメーション */
 @keyframes heroFadeUp {
   from {
     opacity: 0;
@@ -202,11 +163,44 @@ section {
   }
 }
 
+.hero {
+  position: relative;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: linear-gradient(-45deg, #0f2440, #1a365d, #1e40af, #1a365d);
+  background-size: 300% 300%;
+  animation: heroGradient 12s ease infinite;
+}
+
+.hero-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: var(--spacing-2xl) var(--spacing-lg);
+  min-height: 320px;
+}
+
 .hero-title {
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  color: var(--color-text-on-dark);
+  line-height: 1.4;
+  margin: 0;
   animation: heroFadeUp 0.8s ease-out both;
 }
 
 .hero-subtitle {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-on-dark-sub);
+  margin-top: var(--spacing-sm);
+  font-weight: 400;
+  max-width: 600px;
   animation: heroFadeUp 0.8s 0.3s ease-out both;
 }
 
@@ -234,26 +228,6 @@ section {
 .fade-in-card.is-visible {
   opacity: 1;
   transform: translateY(0);
-}
-
-/* ==========================================
-   プロモ写真
-   ========================================== */
-.promo-photo {
-  max-width: var(--max-width);
-  margin: var(--spacing-xl) auto;
-  padding: 0 var(--spacing-md);
-  text-align: center;
-}
-
-.promo-photo img {
-  display: inline-block;
-  max-width: 100%;
-  height: auto;
-  max-height: 480px;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-  object-fit: contain;
 }
 
 /* ==========================================
@@ -588,8 +562,9 @@ section {
     font-size: var(--font-size-sm);
   }
 
-  .promo-photo img {
-    max-height: 240px;
+  .hero-content {
+    min-height: 240px;
+    padding: var(--spacing-xl) var(--spacing-md);
   }
 
   .contact-form {

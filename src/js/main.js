@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // スクロール表示アニメーション
   // セクションにfade-inクラスを付与
-  document.querySelectorAll('section, .promo-photo, .cta-text, .button-container').forEach(el => {
+  document.querySelectorAll('section, .cta-text, .button-container').forEach(el => {
     el.classList.add('fade-in');
   });
 
