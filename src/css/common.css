@@ -38,6 +38,7 @@ p {
 
 h2, h3, h4 {
   color: var(--color-text);
+  font-family: var(--font-family-heading);
   font-weight: 700;
   line-height: 1.3;
 }
@@ -54,11 +55,11 @@ h2 {
 h2::after {
   content: "";
   display: block;
-  width: 60px;
-  height: 3px;
-  background: var(--color-accent);
+  width: 40px;
+  height: 1px;
+  background: var(--color-text);
   margin: var(--spacing-sm) auto 0;
-  border-radius: 2px;
+  opacity: 0.3;
 }
 
 h3 {
@@ -237,6 +238,7 @@ section {
 }
 
 .hero-title {
+  font-family: var(--font-family-heading);
   font-size: clamp(1.75rem, 4vw, 2.75rem);
   font-weight: 700;
   color: #f8fafc;
@@ -339,15 +341,24 @@ section {
   background: var(--color-bg-card);
 }
 
+.card-modern {
+  overflow: hidden;
+}
+
 .card-modern:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
+}
+
+.card-modern:hover .card-img-top {
+  transform: scale(1.05);
 }
 
 .card-modern .card-img-top {
   border-radius: var(--radius-md) var(--radius-md) 0 0;
   height: 220px;
   object-fit: cover;
+  transition: transform 0.4s ease;
 }
 
 .card-modern .card-img-contain {
@@ -521,45 +532,96 @@ section {
 }
 
 /* ==========================================
+   ページトップへ戻るボタン
+   ========================================== */
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-primary);
+  color: var(--color-text-on-dark);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s, visibility 0.3s, transform 0.3s, background-color var(--transition);
+  z-index: 100;
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: var(--color-primary-light);
+}
+
+/* ==========================================
    フッター
    ========================================== */
 .site-footer {
   background-color: var(--color-primary-dark);
   color: var(--color-text-on-dark-sub);
-  padding: var(--spacing-xl) 0 var(--spacing-md);
+  padding: var(--spacing-2xl) 0 var(--spacing-md);
 }
 
 .site-footer .footer-inner {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 var(--spacing-md);
+}
+
+.site-footer .footer-main {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
-  gap: var(--spacing-sm);
+  align-items: flex-start;
+  gap: var(--spacing-xl);
 }
 
 .site-footer .footer-company {
   color: var(--color-text-on-dark);
+  font-family: var(--font-family-heading);
   font-weight: 700;
   font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-xs);
 }
 
-.site-footer .footer-privacy a {
+.site-footer .footer-address {
+  font-size: var(--font-size-sm);
+  line-height: 1.8;
+  margin: 0;
+}
+
+.site-footer .footer-nav {
+  display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.site-footer .footer-nav a {
   color: var(--color-text-on-dark-sub);
   text-decoration: none;
+  font-size: var(--font-size-sm);
   transition: color var(--transition);
 }
 
-.site-footer .footer-privacy a:hover {
+.site-footer .footer-nav a:hover {
   color: var(--color-text-on-dark);
 }
 
 .site-footer .footer-copy {
-  width: 100%;
   text-align: center;
-  margin-top: var(--spacing-md);
+  margin-top: var(--spacing-lg);
   padding-top: var(--spacing-md);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   font-size: var(--font-size-sm);
@@ -639,9 +701,15 @@ section {
     padding: var(--spacing-md);
   }
 
-  .site-footer .footer-inner {
+  .site-footer .footer-main {
     flex-direction: column;
+    align-items: center;
     text-align: center;
+    gap: var(--spacing-md);
+  }
+
+  .site-footer .footer-nav {
+    justify-content: center;
   }
 
   .table th {

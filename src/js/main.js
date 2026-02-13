@@ -1,8 +1,22 @@
 // ヘッダーのスクロール時のクラス付与
 // → スクロールすると影が変わるエフェクト
+// → ページトップへ戻るボタンの表示/非表示
 window.addEventListener('scroll', () => {
   const header = document.querySelector('header');
   if (header) header.classList.toggle('scrolled', window.scrollY > 5);
+
+  const backToTop = document.querySelector('.back-to-top');
+  if (backToTop) backToTop.classList.toggle('is-visible', window.scrollY > 300);
+});
+
+// ページトップへ戻るボタン
+document.addEventListener('DOMContentLoaded', () => {
+  const backToTop = document.querySelector('.back-to-top');
+  if (backToTop) {
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 });
 
 // スムーススクロール

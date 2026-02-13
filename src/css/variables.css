@@ -30,6 +30,7 @@
 
   /* --- フォント --- */
   --font-family: 'Noto Sans JP', 'Yu Gothic', 'Meiryo', sans-serif;
+  --font-family-heading: 'Shippori Mincho', 'Yu Mincho', 'Hiragino Mincho ProN', serif;
   --font-size-base: 1rem;           /* 16px */
   --font-size-sm: 0.875rem;         /* 14px */
   --font-size-lg: 1.125rem;         /* 18px */
