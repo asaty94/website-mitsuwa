@@ -146,61 +146,84 @@ section {
 /* ==========================================
    ヒーローセクション
    ========================================== */
-@keyframes heroGradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes heroFadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes meshFloat {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(30px, -20px); }
 }
 
 .hero {
   position: relative;
   width: 100%;
-  max-width: var(--max-width);
-  margin: 0 auto;
-  border-radius: var(--radius-lg);
   overflow: hidden;
-  background: linear-gradient(-45deg, #0f2440, #1a365d, #1e40af, #1a365d);
-  background-size: 300% 300%;
-  animation: heroGradient 12s ease infinite;
+  /* メッシュグラデーション: グレーブルー系 */
+  background-color: #1e293b;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 10% 90%, rgba(51, 65, 85, 0.8) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 80% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 50% at 50% 50%, rgba(71, 85, 105, 0.5) 0%, transparent 60%);
+  margin-bottom: 0;
+}
+
+/* 微妙なドットパターン */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+
+/* アクセントの光彩 */
+.hero::after {
+  content: "";
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+  animation: meshFloat 8s ease-in-out infinite;
+  pointer-events: none;
 }
 
 .hero-content {
   position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: var(--spacing-2xl) var(--spacing-lg);
-  min-height: 320px;
+  padding: 5rem var(--spacing-lg);
+  max-width: var(--max-width);
+  margin: 0 auto;
 }
 
 .hero-title {
-  font-size: var(--font-size-3xl);
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
   font-weight: 700;
-  color: var(--color-text-on-dark);
-  line-height: 1.4;
+  color: #f8fafc;
+  line-height: 1.5;
   margin: 0;
+  letter-spacing: 0.04em;
   animation: heroFadeUp 0.8s ease-out both;
 }
 
 .hero-subtitle {
-  font-size: var(--font-size-lg);
-  color: var(--color-text-on-dark-sub);
-  margin-top: var(--spacing-sm);
+  font-size: clamp(0.875rem, 1.5vw, 1.125rem);
+  color: #94a3b8;
+  margin-top: var(--spacing-md);
   font-weight: 400;
-  max-width: 600px;
+  max-width: 560px;
+  line-height: 1.8;
+  letter-spacing: 0.02em;
   animation: heroFadeUp 0.8s 0.3s ease-out both;
 }
 
@@ -502,12 +525,8 @@ section {
 
 /* タブレット */
 @media (max-width: 768px) {
-  .hero-title {
-    font-size: var(--font-size-2xl);
-  }
-
-  .hero-subtitle {
-    font-size: var(--font-size-base);
+  .hero-content {
+    padding: 4rem var(--spacing-md);
   }
 
   .cta-text {
@@ -549,22 +568,13 @@ section {
     margin-bottom: var(--spacing-xl);
   }
 
-  .hero {
-    border-radius: 0;
-    margin-top: 0;
-  }
-
-  .hero-title {
-    font-size: var(--font-size-xl);
-  }
-
-  .hero-subtitle {
-    font-size: var(--font-size-sm);
-  }
-
   .hero-content {
-    min-height: 240px;
-    padding: var(--spacing-xl) var(--spacing-md);
+    padding: 3rem var(--spacing-sm);
+  }
+
+  .hero::after {
+    width: 250px;
+    height: 250px;
   }
 
   .contact-form {
