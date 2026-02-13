@@ -27,4 +27,33 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // スクロール表示アニメーション
+  // セクションにfade-inクラスを付与
+  document.querySelectorAll('section, .promo-photo, .cta-text, .button-container').forEach(el => {
+    el.classList.add('fade-in');
+  });
+
+  // 製品カードに段階的アニメーション用クラスを付与
+  document.querySelectorAll('.card-modern').forEach((card, i) => {
+    card.classList.add('fade-in-card');
+    card.style.transitionDelay = `${i % 3 * 0.1}s`;
+  });
+
+  // Intersection Observerで画面内に入ったら表示
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  document.querySelectorAll('.fade-in, .fade-in-card').forEach(el => {
+    observer.observe(el);
+  });
 });

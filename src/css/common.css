@@ -45,7 +45,7 @@ h2, h3, h4 {
 h2 {
   font-size: var(--font-size-2xl);
   text-align: center;
-  margin: 0 0 var(--spacing-xl);
+  margin: 0 0 var(--spacing-lg);
   padding-bottom: var(--spacing-sm);
   position: relative;
 }
@@ -63,7 +63,7 @@ h2::after {
 
 h3 {
   font-size: var(--font-size-xl);
-  margin: var(--spacing-xl) 0 var(--spacing-md);
+  margin: var(--spacing-lg) 0 var(--spacing-md);
   padding-left: var(--spacing-md);
   position: relative;
 }
@@ -90,7 +90,7 @@ h4 {
    ========================================== */
 main {
   max-width: var(--max-width);
-  margin: var(--spacing-xl) auto var(--spacing-2xl);
+  margin: 0 auto var(--spacing-2xl);
   padding: 0 var(--spacing-md);
 }
 
@@ -150,7 +150,7 @@ section {
   position: relative;
   width: 100%;
   max-width: var(--max-width);
-  margin: var(--spacing-md) auto 0;
+  margin: 0 auto;
   border-radius: var(--radius-lg);
   overflow: hidden;
 }
@@ -188,6 +188,52 @@ section {
   margin-top: var(--spacing-sm);
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   font-weight: 400;
+}
+
+/* ヒーローのフェードインアニメーション */
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-title {
+  animation: heroFadeUp 0.8s ease-out both;
+}
+
+.hero-subtitle {
+  animation: heroFadeUp 0.8s 0.3s ease-out both;
+}
+
+/* ==========================================
+   スクロール表示アニメーション
+   ========================================== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* カードの段階的表示 */
+.fade-in-card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.fade-in-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ==========================================
