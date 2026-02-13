@@ -22,12 +22,21 @@ document.addEventListener('DOMContentLoaded', () => {
 // スムーススクロール
 // → ページ内リンクをクリックしたとき滑らかにスクロール
 document.addEventListener('DOMContentLoaded', () => {
-  // スムーススクロール
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  // スムーススクロール（同一ページ内のアンカーリンク）
+  document.querySelectorAll('a[href*="#"]').forEach(anchor => {
     anchor.addEventListener('click', e => {
-      e.preventDefault();
-      const target = document.querySelector(anchor.getAttribute('href'));
-      if (target) target.scrollIntoView({ behavior: 'smooth' });
+      const href = anchor.getAttribute('href');
+      const hash = href.includes('#') ? '#' + href.split('#')[1] : null;
+      if (!hash) return;
+      // 同一ページ内のリンクのみスムーススクロール
+      const isSamePage = href.startsWith('#') || href.startsWith('/#') || href.startsWith(location.pathname + '#');
+      if (isSamePage && location.pathname === '/' || location.pathname.endsWith('/index.html')) {
+        const target = document.querySelector(hash);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
     });
   });
 
