@@ -98,14 +98,34 @@ h4 {
 /* ==========================================
    レイアウト
    ========================================== */
-main {
+
+/* セクション背景の交互配色（全幅） */
+.section-bg-gray {
+  background-color: var(--color-bg-light);
+  padding: var(--spacing-2xl) 0;
+}
+
+.section-bg-white {
+  background-color: var(--color-bg);
+  padding: var(--spacing-2xl) 0;
+}
+
+/* コンテンツ幅の制約ラッパー */
+.content-wrapper {
   max-width: var(--max-width);
-  margin: 0 auto var(--spacing-2xl);
+  margin: 0 auto;
   padding: 0 var(--spacing-md);
 }
 
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* セクション内の余白（ラッパーがパディングを管理するため縮小） */
 section {
-  margin-bottom: var(--spacing-section);
+  margin-bottom: 0;
 }
 
 /* ==========================================
@@ -268,10 +288,10 @@ section {
    ========================================== */
 .cta-text {
   text-align: center;
-  font-size: var(--font-size-xl);
-  font-weight: 600;
-  color: var(--color-text);
-  margin: var(--spacing-xl) auto var(--spacing-md);
+  font-size: var(--font-size-lg);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  margin: 0 auto var(--spacing-lg);
 }
 
 .button-container {
@@ -279,7 +299,7 @@ section {
   justify-content: center;
   gap: var(--spacing-md);
   flex-wrap: wrap;
-  margin-bottom: var(--spacing-2xl);
+  margin-bottom: var(--spacing-xl);
 }
 
 .contact-btn {
@@ -326,6 +346,13 @@ section {
 
 .card-modern .card-img-top {
   border-radius: var(--radius-md) var(--radius-md) 0 0;
+  height: 220px;
+  object-fit: cover;
+}
+
+.card-modern .card-img-contain {
+  object-fit: contain;
+  background-color: var(--color-bg-light);
 }
 
 .btn-row {
@@ -337,6 +364,15 @@ section {
 /* ==========================================
    会社概要テーブル
    ========================================== */
+.company-card {
+  max-width: 720px;
+  margin: 0 auto;
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: var(--spacing-lg) var(--spacing-xl);
+}
+
 .table th {
   width: 140px;
   white-space: nowrap;
@@ -571,11 +607,15 @@ section {
 
   main {
     padding: 0 var(--spacing-sm);
-    margin-top: var(--spacing-md);
   }
 
-  section {
-    margin-bottom: var(--spacing-xl);
+  .content-wrapper {
+    padding: 0 var(--spacing-sm);
+  }
+
+  .section-bg-gray,
+  .section-bg-white {
+    padding: var(--spacing-xl) 0;
   }
 
   .hero-content {
@@ -585,6 +625,14 @@ section {
   .hero::after {
     width: 250px;
     height: 250px;
+  }
+
+  .card-modern .card-img-top {
+    height: 180px;
+  }
+
+  .company-card {
+    padding: var(--spacing-md) var(--spacing-sm);
   }
 
   .contact-form {

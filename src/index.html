@@ -30,93 +30,106 @@
       </div>
     </section>
 
-    <main>
-      <!-- お問い合わせ誘導 -->
-      <p class="cta-text">
-        最短納期にて対応いたしますので、一度、お問い合わせください。
-      </p>
-      <div class="button-container">
-        <a href="tel:+0756412276" class="contact-btn phone">
-          📞 お電話はこちら
-        </a>
-        <a href="mailto:mitsuwa@iris.eonet.ne.jp?subject=お問い合わせ" class="contact-btn mail">
-          ✉️ メールはこちら
-        </a>
+    <!-- 製品紹介（全幅グレー背景） -->
+    <div class="section-bg-gray">
+      <main>
+        <section id="products">
+          <h2>製品紹介</h2>
+          {{> product-introduction-trans}}
+          {{> product-introduction-drop}}
+        </section>
+      </main>
+    </div>
+
+    <!-- 会社概要 -->
+    <div class="section-bg-white">
+      <div class="content-wrapper">
+        <section id="company">
+          <h2>会社概要</h2>
+          <div class="company-card">
+            <table class="table table-borderless align-middle mb-0">
+              <tbody>
+                <tr><th scope="row">社名</th><td>株式会社ミツワ電子器製作所</td></tr>
+                <tr><th scope="row">設立</th><td>1977年3月</td></tr>
+                <tr><th scope="row">代表者</th><td>澤 能孝</td></tr>
+                <tr><th scope="row">資本金</th><td>1,000万円</td></tr>
+                <tr><th scope="row">従業員数</th><td>9名</td></tr>
+                <tr>
+                  <th scope="row">取引銀行</th>
+                  <td>
+                    京都中央信用金庫 竹田支店<br>
+                    京都銀行 東九条支店<br>
+                    三菱東京UFJ銀行 京都中央支店
+                  </td>
+                </tr>
+                <tr><th scope="row">電話番号</th><td>075-641-2276</td></tr>
+                <tr><th scope="row">FAX番号</th><td>075-642-7608</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
       </div>
-      <!-- 製品紹介 -->
-      <section id="products">
-        <h2>製品紹介</h2>
-        {{> product-introduction-trans}}
-        {{> product-introduction-drop}}
-      </section>
+    </div>
 
-      <!-- 会社概要 -->
-      <section id="company" class="container mb-5">
-        <h2>会社概要</h2>
-        <div class="table-responsive">
-          <table class="table table-hover align-middle">
-            <tbody>
-              <tr><th scope="row" class="text-secondary fw-semibold">社名</th><td>株式会社ミツワ電子器製作所</td></tr>
-              <tr><th scope="row" class="text-secondary fw-semibold">設立</th><td>1977年3月</td></tr>
-              <tr><th scope="row" class="text-secondary fw-semibold">代表者</th><td>澤 能孝</td></tr>
-              <tr><th scope="row" class="text-secondary fw-semibold">資本金</th><td>1,000万円</td></tr>
-              <tr><th scope="row" class="text-secondary fw-semibold">従業員数</th><td>9名</td></tr>
-              <tr>
-                <th scope="row" class="text-secondary fw-semibold">取引銀行</th>
-                <td>
-                  京都中央信用金庫 竹田支店<br>
-                  京都銀行 東九条支店<br>
-                  三菱東京UFJ銀行 京都中央支店
-                </td>
-              </tr>
-              <tr><th scope="row" class="text-secondary fw-semibold">電話番号</th><td>075-641-2276</td></tr>
-              <tr><th scope="row" class="text-secondary fw-semibold">FAX番号</th><td>075-642-7608</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
+    <!-- 住所・地図（グレー背景） -->
+    <div class="section-bg-gray">
+      <div class="content-wrapper">
+        <section id="map">
+          <h2>住所</h2>
+          <p class="text-center">
+            〒612-8402 京都府京都市伏見区深草川久保町１７−７
+          </p>
+          <div class="map-container">
+            <iframe
+              src="https://www.google.com/maps?q=〒612-8402+京都府京都市伏見区深草川久保町17-7&output=embed"
+              title="株式会社ミツワ電子器製作所の所在地"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </section>
+      </div>
+    </div>
 
-      <!-- 住所・地図 -->
-      <section id="map">
-        <h2>住所</h2>
-        <p class="text-center">
-          〒612-8402 京都府京都市伏見区深草川久保町１７−７
-        </p>
-        <div class="map-container">
-          <iframe
-            src="https://www.google.com/maps?q=〒612-8402+京都府京都市伏見区深草川久保町17-7&output=embed"
-            title="株式会社ミツワ電子器製作所の所在地"
-            allowfullscreen
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
-        </div>
-      </section>
-
-      <!-- 問い合わせフォーム -->
-      <section id="contact">
-        <h2>問い合わせ</h2>
-        <div class="contact-form">
-          <form action="https://formsubmit.co/mitsuwa@iris.eonet.ne.jp" method="POST">
-            <input type="hidden" name="_subject" value="ウェブサイトからのお問い合わせ" />
-            <input type="hidden" name="_captcha" value="true" />
-            <input type="hidden" name="_next" value="https://asaty1994.github.io/website-mitsuwa/thanks.html" />
-            <input type="text" name="_honey" style="display:none" />
-            <label for="name">お名前 <span aria-hidden="true">*</span></label>
-            <input type="text" id="name" name="name" required />
-            <label for="email">メールアドレス <span aria-hidden="true">*</span></label>
-            <input type="email" id="email" name="email" required />
-            <label for="phone">電話番号</label>
-            <input type="tel" id="phone" name="phone" placeholder="075-641-2276" />
-            <label for="fax">FAX番号</label>
-            <input type="tel" id="fax" name="fax" placeholder="075-642-7608" />
-            <label for="message">お問い合わせ内容 <span aria-hidden="true">*</span></label>
-            <textarea id="message" name="message" required></textarea>
-            <button type="submit" class="btn-submit">送信</button>
-          </form>
-        </div>
-      </section>
-    </main>
+    <!-- 問い合わせ -->
+    <div class="section-bg-white">
+      <div class="content-wrapper">
+        <section id="contact">
+          <h2>お問い合わせ</h2>
+          <p class="cta-text">
+            最短納期にて対応いたしますので、お気軽にお問い合わせください。
+          </p>
+          <div class="button-container">
+            <a href="tel:+0756412276" class="contact-btn phone">
+              📞 お電話はこちら
+            </a>
+            <a href="mailto:mitsuwa@iris.eonet.ne.jp?subject=お問い合わせ" class="contact-btn mail">
+              ✉️ メールはこちら
+            </a>
+          </div>
+          <div class="contact-form">
+            <form action="https://formsubmit.co/mitsuwa@iris.eonet.ne.jp" method="POST">
+              <input type="hidden" name="_subject" value="ウェブサイトからのお問い合わせ" />
+              <input type="hidden" name="_captcha" value="true" />
+              <input type="hidden" name="_next" value="https://asaty1994.github.io/website-mitsuwa/thanks.html" />
+              <input type="text" name="_honey" style="display:none" />
+              <label for="name">お名前 <span aria-hidden="true">*</span></label>
+              <input type="text" id="name" name="name" required />
+              <label for="email">メールアドレス <span aria-hidden="true">*</span></label>
+              <input type="email" id="email" name="email" required />
+              <label for="phone">電話番号</label>
+              <input type="tel" id="phone" name="phone" placeholder="075-641-2276" />
+              <label for="fax">FAX番号</label>
+              <input type="tel" id="fax" name="fax" placeholder="075-642-7608" />
+              <label for="message">お問い合わせ内容 <span aria-hidden="true">*</span></label>
+              <textarea id="message" name="message" required></textarea>
+              <button type="submit" class="btn-submit">送信</button>
+            </form>
+          </div>
+        </section>
+      </div>
+    </div>
 
     {{> footer}}
 
