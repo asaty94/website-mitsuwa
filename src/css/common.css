@@ -69,8 +69,13 @@ h3 {
 }
 
 /* セクション内の最初のh3は上マージン不要（h2直後） */
-section > section:first-child > h3:first-child {
+#products > section:first-child > h3:first-child {
   margin-top: 0;
+}
+
+/* 製品紹介のh2は下マージンを詰める */
+#products > h2 {
+  margin-bottom: var(--spacing-sm);
 }
 
 /* h3の左バー */
