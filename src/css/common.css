@@ -68,6 +68,11 @@ h3 {
   position: relative;
 }
 
+/* セクション内の最初のh3は上マージン不要（h2直後） */
+section > section:first-child > h3:first-child {
+  margin-top: 0;
+}
+
 /* h3の左バー */
 h3::before {
   content: "";
