@@ -23,22 +23,21 @@ document.addEventListener('DOMContentLoaded', () => {
 // → ページ内リンクをクリックしたとき滑らかにスクロール
 document.addEventListener('DOMContentLoaded', () => {
   // スムーススクロール（同一ページ内のアンカーリンク）
-  document.querySelectorAll('a[href*="#"]').forEach(anchor => {
-    anchor.addEventListener('click', e => {
-      const href = anchor.getAttribute('href');
-      const hash = href.includes('#') ? '#' + href.split('#')[1] : null;
-      if (!hash) return;
-      // 同一ページ内のリンクのみスムーススクロール
-      const isSamePage = href.startsWith('#') || href.startsWith('/#') || href.startsWith(location.pathname + '#');
-      if (isSamePage && location.pathname === '/' || location.pathname.endsWith('/index.html')) {
+  const isIndexPage = location.pathname.endsWith('/') || location.pathname.endsWith('/index.html');
+  if (isIndexPage) {
+    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+      anchor.addEventListener('click', e => {
+        const href = anchor.getAttribute('href');
+        const hash = href.includes('#') ? '#' + href.split('#')[1] : null;
+        if (!hash) return;
         const target = document.querySelector(hash);
         if (target) {
           e.preventDefault();
           target.scrollIntoView({ behavior: 'smooth' });
         }
-      }
+      });
     });
-  });
+  }
 
   // フォームバリデーション表示
   const form = document.querySelector('.contact-form form');

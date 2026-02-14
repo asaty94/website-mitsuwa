@@ -36,7 +36,7 @@ p {
   font-weight: 400;
 }
 
-h2, h3, h4 {
+h2, h3, h4, h5 {
   color: var(--color-text);
   font-family: var(--font-family-heading);
   font-weight: 700;
@@ -139,6 +139,7 @@ section {
 
 .site-header .navbar-brand {
   color: var(--color-text-on-dark) !important;
+  font-family: var(--font-family-heading);
   font-weight: 700;
   font-size: 1.25rem;
   line-height: 1.3;
