@@ -286,48 +286,45 @@ section {
 }
 
 /* ==========================================
-   問い合わせボタン
+   お問い合わせセクション
    ========================================== */
-.cta-text {
+.contact-lead {
   text-align: center;
   font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  margin: 0 auto var(--spacing-xl);
+}
+
+.contact-phone-card {
+  max-width: 640px;
+  margin: 0 auto var(--spacing-xl);
+  padding: var(--spacing-lg) var(--spacing-xl);
+  text-align: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.contact-phone-card h4 {
+  margin: 0 0 var(--spacing-sm);
+  font-size: var(--font-size-base);
   font-weight: 500;
   color: var(--color-text-secondary);
-  margin: 0 auto var(--spacing-lg);
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
-.button-container {
-  display: flex;
-  justify-content: center;
-  gap: var(--spacing-md);
-  flex-wrap: wrap;
-  margin-bottom: var(--spacing-xl);
-}
-
-.contact-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-xs);
-  padding: 0.875rem 2.5rem;
-  border-radius: var(--radius-full);
-  font-weight: 600;
-  font-size: var(--font-size-base);
+.contact-phone-number {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--color-primary);
   text-decoration: none;
-  color: var(--color-text-on-dark);
-  box-shadow: var(--shadow-md);
-  transition: transform var(--transition), box-shadow var(--transition);
-  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-hover));
+  letter-spacing: 0.04em;
+  transition: color var(--transition);
 }
 
-.contact-btn.mail {
-  background: linear-gradient(135deg, var(--color-accent-green), var(--color-accent-green-hover));
-}
-
-.contact-btn:hover,
-.contact-btn:focus {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
-  color: var(--color-text-on-dark);
+.contact-phone-number:hover {
+  color: var(--color-primary-light);
 }
 
 /* ==========================================
@@ -399,6 +396,16 @@ section {
   background: var(--color-bg-light);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
+}
+
+.contact-form > h4 {
+  text-align: center;
+  margin: 0 0 var(--spacing-lg);
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
 .contact-form label {
@@ -689,20 +696,8 @@ section {
     padding: 4rem var(--spacing-md);
   }
 
-  .cta-text {
-    font-size: var(--font-size-lg);
-  }
-
-  .button-container {
-    flex-direction: column;
-    align-items: center;
-    gap: var(--spacing-sm);
-  }
-
-  .contact-btn {
-    width: 100%;
-    max-width: 320px;
-    justify-content: center;
+  .contact-phone-number {
+    font-size: var(--font-size-xl);
   }
 
   h2 { font-size: var(--font-size-xl); }
