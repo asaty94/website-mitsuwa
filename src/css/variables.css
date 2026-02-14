@@ -7,10 +7,7 @@
   --color-primary: #1a365d;         /* ダークネイビー（信頼・品格） */
   --color-primary-light: #2a4a7f;   /* ナビホバー等 */
   --color-primary-dark: #0f2440;    /* 濃い部分 */
-  --color-accent: #2563eb;          /* アクセントブルー（ボタン等） */
-  --color-accent-hover: #1d4ed8;    /* アクセントホバー */
-  --color-accent-green: #059669;    /* メールボタン等 */
-  --color-accent-green-hover: #047857;
+  --color-accent: #2563eb;          /* アクセントブルー（フォーカス等） */
 
   /* テキスト */
   --color-text: #1e293b;            /* 本文 */
@@ -30,7 +27,6 @@
 
   /* --- フォント --- */
   --font-family: 'Shippori Mincho', 'Yu Mincho', 'Hiragino Mincho ProN', serif;
-  --font-family-heading: 'Shippori Mincho', 'Yu Mincho', 'Hiragino Mincho ProN', serif;
   --font-size-base: 1rem;           /* 16px */
   --font-size-sm: 0.875rem;         /* 14px */
   --font-size-lg: 1.125rem;         /* 18px */
@@ -46,7 +42,6 @@
   --spacing-lg: 2rem;
   --spacing-xl: 3rem;
   --spacing-2xl: 5rem;
-  --spacing-section: 6rem;          /* セクション間 */
 
   /* --- レイアウト --- */
   --max-width: 1100px;
