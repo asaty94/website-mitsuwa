@@ -181,57 +181,59 @@ section {
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes meshFloat {
-  0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(30px, -20px); }
-}
-
 .hero {
   position: relative;
   width: 100%;
+  min-height: 480px;
   overflow: hidden;
-  /* メッシュグラデーション: グレーブルー系 */
   background-color: #1e293b;
-  background-image:
-    radial-gradient(ellipse 80% 60% at 10% 90%, rgba(51, 65, 85, 0.8) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 80% at 80% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
-    radial-gradient(ellipse 50% 50% at 50% 50%, rgba(71, 85, 105, 0.5) 0%, transparent 60%);
-  margin-bottom: 0;
 }
 
-/* 微妙なドットパターン */
-.hero::before {
-  content: "";
+/* スライドショー背景 */
+.hero-slides {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-  background-size: 24px 24px;
-  pointer-events: none;
 }
 
-/* アクセントの光彩 */
-.hero::after {
-  content: "";
+.hero-slide {
   position: absolute;
-  top: -20%;
-  right: -10%;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
-  animation: meshFloat 8s ease-in-out infinite;
-  pointer-events: none;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+.hero-slide.is-active {
+  opacity: 1;
+}
+
+/* 看板写真: 上部の看板が見えるよう調整 */
+.hero-slide--signboard {
+  background-position: center top;
+}
+
+/* 暗いオーバーレイ（テキスト可読性確保） */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(15, 23, 42, 0.55) 0%,
+    rgba(15, 23, 42, 0.7) 100%
+  );
+  z-index: 1;
 }
 
 .hero-content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 5rem var(--spacing-lg);
+  padding: 6rem var(--spacing-lg);
   max-width: var(--max-width);
   margin: 0 auto;
 }
@@ -243,17 +245,19 @@ section {
   line-height: 1.5;
   margin: 0;
   letter-spacing: 0.04em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
   animation: heroFadeUp 0.8s ease-out both;
 }
 
 .hero-subtitle {
   font-size: clamp(0.875rem, 1.5vw, 1.125rem);
-  color: #94a3b8;
+  color: #cbd5e1;
   margin-top: var(--spacing-md);
   font-weight: 400;
   max-width: 560px;
   line-height: 1.8;
   letter-spacing: 0.02em;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
   animation: heroFadeUp 0.8s 0.3s ease-out both;
 }
 
@@ -352,10 +356,6 @@ section {
   transition: transform 0.4s ease;
 }
 
-.card-modern .card-img-contain {
-  object-fit: contain;
-  background-color: var(--color-bg-light);
-}
 
 .btn-row {
   display: flex;
@@ -686,7 +686,7 @@ section {
 /* タブレット */
 @media (max-width: 768px) {
   .hero-content {
-    padding: 4rem var(--spacing-md);
+    padding: 5rem var(--spacing-md);
   }
 
   .contact-phone-number {
@@ -720,13 +720,12 @@ section {
     padding: var(--spacing-xl) 0;
   }
 
-  .hero-content {
-    padding: 3rem var(--spacing-sm);
+  .hero {
+    min-height: 360px;
   }
 
-  .hero::after {
-    width: 250px;
-    height: 250px;
+  .hero-content {
+    padding: 4rem var(--spacing-sm);
   }
 
   .card-modern .card-img-top {
