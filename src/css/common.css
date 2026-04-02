@@ -356,6 +356,23 @@ section {
   transition: transform 0.4s ease;
 }
 
+#transformers .card-modern .card-img-top {
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: contain;
+  background-color: var(--color-bg-light);
+}
+
+#transformers .card-modern .card-img-square {
+  aspect-ratio: 1 / 1;
+}
+
+#droppers .card-modern .card-img-top {
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  background-color: var(--color-bg-light);
+}
 
 .btn-row {
   display: flex;
