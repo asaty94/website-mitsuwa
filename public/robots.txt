@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://asaty1994.github.io/website-mitsuwa/sitemap.xml
+Sitemap: https://asaty94.github.io/website-mitsuwa/sitemap.xml

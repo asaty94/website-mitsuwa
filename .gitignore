@@ -16,3 +16,6 @@ dist/
 .vscode/
 *.swp
 *.swo
+
+# Developer-only docs (kept locally, not pushed)
+CLAUDE.md
