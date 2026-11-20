@@ -1,21 +1,29 @@
-# Windows
-desktop.ini
-Thumbs.db
-
-# Node.js
+# ===== ビルド・依存関係（website/） =====
 node_modules/
-dist/
+/website/dist/
 
-# OS
-.DS_Store
+# ===== 環境変数・ローカル設定 =====
+.env
+.env.*
+!.env.example
+*.local
 
-# Logs
+# ===== Claude Code（個人用のみ除外。settings.json は共有） =====
+.claude/settings.local.json
+CLAUDE.local.md
+
+# ===== ログ =====
 *.log
 
-# Editor
-.vscode/
-*.swp
-*.swo
+# ===== OS =====
+.DS_Store
+._*
+Thumbs.db
+desktop.ini
 
-# Developer-only docs (kept locally, not pushed)
-CLAUDE.md
+# ===== エディタ =====
+.vscode/
+.idea/
+
+# ===== Office 一時ファイル（specification/ 用） =====
+~$*
