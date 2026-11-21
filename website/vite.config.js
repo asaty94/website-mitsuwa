@@ -4,7 +4,7 @@ import handlebars from 'vite-plugin-handlebars';
 
 // publicディレクトリのパスにbaseを付与するプラグイン（ビルド時のみ）
 // Viteは <a href> による public 配下への直リンクを書き換えないため、ここで補完する
-// あわせて、SITE_URL 指定時は canonical / og:url / _next などの絶対URLを差し替える
+// あわせて、SITE_URL 指定時は canonical / og:url / og:image の絶対URLを差し替える
 function publicBasePlugin(base, siteUrl) {
   return {
     name: 'public-base',
@@ -19,7 +19,7 @@ function publicBasePlugin(base, siteUrl) {
   };
 }
 
-// GitHub Pages の公開URL（HTML内の canonical / og:url / _next で使用）
+// GitHub Pages の公開URL（HTML内の canonical / og:url / og:image で使用）
 const GITHUB_PAGES_URL = 'https://asaty94.github.io/website-mitsuwa/';
 
 // 本番サーバー（FTP）向けビルドは BASE_PATH と SITE_URL を指定する
@@ -48,7 +48,6 @@ export default defineConfig(({ command, isPreview }) => ({
       input: {
         main: resolve(__dirname, 'src/index.html'),
         privacypolicy: resolve(__dirname, 'src/privacypolicy.html'),
-        thanks: resolve(__dirname, 'src/thanks.html'),
       },
     },
   },

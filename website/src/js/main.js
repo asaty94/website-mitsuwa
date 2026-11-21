@@ -39,16 +39,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // フォームバリデーション表示
-  const form = document.querySelector('.contact-form form');
-  if (form) {
-    form.addEventListener('submit', e => {
-      form.parentElement.classList.add('was-validated');
-      if (!form.checkValidity()) {
-        e.preventDefault();
-      }
-    });
-  }
+  // メールアドレスの mailto リンク化
+  // → HTML には全角の＠で書いておき、ここで半角のアドレスと件名入りのリンクに組み立てる
+  document.querySelectorAll('.contact-mail-address').forEach(el => {
+    const { user, domain, subject } = el.dataset;
+    if (!user || !domain) return;
+    const address = `${user}@${domain}`;
+    const link = document.createElement('a');
+    link.href = `mailto:${address}` + (subject ? `?subject=${encodeURIComponent(subject)}` : '');
+    link.textContent = address;
+    el.replaceChildren(link);
+    // 半角で表示できたので、全角の＠についての注記は不要
+    const note = el.parentElement.querySelector('.contact-mail-note');
+    if (note) note.hidden = true;
+  });
 
   // スクロール表示アニメーション
   // セクションにfade-inクラスを付与

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.google.com; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'" />
+      content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.google.com; form-action 'self'; base-uri 'self'; object-src 'none'" />
     <title>株式会社ミツワ電子器製作所</title>
     <meta name="description" content="変圧器・ドロッパー電源（シリーズ電源）専門メーカー。1Wから1kWまで、オーダーメイドで高品質なリニア電源を製造。最短納期で対応。" />
     <meta name="keywords" content="変圧器,ドロッパー電源,トランス,リニア電源,京都,ミツワ電子器製作所,オーダーメイド,短納期" />
@@ -117,29 +117,17 @@
           </p>
 
           <div class="contact-phone-card">
-            <h4>お電話でのお問い合わせ</h4>
+            <h4>お電話・FAXでのお問い合わせ</h4>
             <a href="tel:0756412276" class="contact-phone-number">075-641-2276</a>
+            <p class="contact-fax">FAX：075-642-7608</p>
           </div>
 
-          <div class="contact-form">
-            <h4>フォームでのお問い合わせ</h4>
-            <form action="https://formsubmit.co/mitsuwa@iris.eonet.ne.jp" method="POST">
-              <input type="hidden" name="_subject" value="ウェブサイトからのお問い合わせ" />
-              <input type="hidden" name="_captcha" value="true" />
-              <input type="hidden" name="_next" value="https://asaty94.github.io/website-mitsuwa/thanks.html" />
-              <input type="text" name="_honey" style="display:none" />
-              <label for="name">お名前 <span aria-hidden="true">*</span></label>
-              <input type="text" id="name" name="name" required />
-              <label for="email">メールアドレス <span aria-hidden="true">*</span></label>
-              <input type="email" id="email" name="email" required />
-              <label for="phone">電話番号</label>
-              <input type="tel" id="phone" name="phone" placeholder="075-641-2276" />
-              <label for="fax">FAX番号</label>
-              <input type="tel" id="fax" name="fax" placeholder="075-642-7608" />
-              <label for="message">お問い合わせ内容 <span aria-hidden="true">*</span></label>
-              <textarea id="message" name="message" required></textarea>
-              <button type="submit" class="btn-submit">送信</button>
-            </form>
+          <!-- メールアドレスは収集されにくいよう全角の＠で書き、main.js で mailto リンクに組み立てる -->
+          <div class="contact-mail-card">
+            <h4>メールでのお問い合わせ</h4>
+            <p class="contact-mail-address" data-user="mitsuwa" data-domain="iris.eonet.ne.jp" data-subject="ウェブサイトからのお問い合わせ">mitsuwa＠iris.eonet.ne.jp</p>
+            <p class="contact-mail-note">迷惑メール対策のため「＠」を全角で表示しています。送信の際は半角の「@」に置き換えてください。</p>
+            <p class="contact-mail-hint">お名前・ご連絡先・お問い合わせ内容をご記入のうえ、お送りください。</p>
           </div>
         </section>
       </div>
