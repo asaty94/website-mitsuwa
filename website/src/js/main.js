@@ -19,6 +19,23 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+// ヒーローのスライドショー
+// → 背景写真を一定の間隔で切り替える（切り替えのフェードは CSS の transition）
+// → 動きを減らす設定の閲覧者には切り替えず、最初の写真のままにする
+document.addEventListener('DOMContentLoaded', () => {
+  const slides = document.querySelectorAll('.hero-slide');
+  if (slides.length < 2) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  let current = [...slides].findIndex(slide => slide.classList.contains('is-active'));
+  if (current < 0) current = 0;
+  setInterval(() => {
+    slides[current].classList.remove('is-active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('is-active');
+  }, 5000);
+});
+
 // スムーススクロール
 // → ページ内リンクをクリックしたとき滑らかにスクロール
 document.addEventListener('DOMContentLoaded', () => {
