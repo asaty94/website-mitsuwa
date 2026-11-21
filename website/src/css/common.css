@@ -328,6 +328,58 @@ section {
   color: var(--color-primary-light);
 }
 
+.contact-fax {
+  margin: var(--spacing-sm) 0 0;
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  letter-spacing: 0.04em;
+}
+
+.contact-mail-card {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: var(--spacing-lg) var(--spacing-xl);
+  text-align: center;
+  background: var(--color-bg-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.contact-mail-card h4 {
+  margin: 0 0 var(--spacing-sm);
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.contact-mail-address {
+  margin: 0;
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: 0.02em;
+  overflow-wrap: anywhere;
+}
+
+.contact-mail-address a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.contact-mail-address a:hover {
+  color: var(--color-primary-light);
+}
+
+.contact-mail-note,
+.contact-mail-hint {
+  margin: var(--spacing-sm) 0 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-sub);
+}
+
 /* ==========================================
    製品カード
    ========================================== */
@@ -395,140 +447,6 @@ section {
 .table th {
   width: 140px;
   white-space: nowrap;
-}
-
-/* ==========================================
-   問い合わせフォーム
-   ========================================== */
-.contact-form {
-  max-width: 640px;
-  margin: 0 auto;
-  padding: var(--spacing-xl);
-  background: var(--color-bg-light);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
-}
-
-.contact-form > h4 {
-  text-align: center;
-  margin: 0 0 var(--spacing-lg);
-  font-size: var(--font-size-base);
-  font-weight: 500;
-  color: var(--color-text-secondary);
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.contact-form label {
-  display: block;
-  margin-bottom: 6px;
-  font-weight: 600;
-  color: var(--color-primary);
-  font-size: var(--font-size-sm);
-}
-
-.contact-form input[type="text"],
-.contact-form input[type="email"],
-.contact-form input[type="tel"],
-.contact-form textarea {
-  width: 100%;
-  padding: 10px 14px;
-  margin-bottom: var(--spacing-md);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  font-size: var(--font-size-base);
-  font-family: inherit;
-  transition: border-color var(--transition), box-shadow var(--transition);
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-  outline: none;
-  border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
-}
-
-.contact-form textarea {
-  resize: vertical;
-  min-height: 140px;
-}
-
-.contact-form .btn-submit {
-  display: block;
-  width: 100%;
-  max-width: 240px;
-  margin: var(--spacing-md) auto 0;
-  padding: 12px 24px;
-  background-color: var(--color-primary);
-  color: var(--color-text-on-dark);
-  border: none;
-  border-radius: var(--radius-sm);
-  font-size: var(--font-size-base);
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color var(--transition);
-}
-
-.contact-form .btn-submit:hover {
-  background-color: var(--color-primary-light);
-}
-
-/* バリデーション: 送信試行後のみ表示 */
-.contact-form.was-validated input:invalid,
-.contact-form.was-validated textarea:invalid {
-  border-color: #dc3545;
-}
-
-.contact-form.was-validated input:invalid:focus,
-.contact-form.was-validated textarea:invalid:focus {
-  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.15);
-}
-
-.contact-form input::placeholder,
-.contact-form textarea::placeholder {
-  color: var(--color-text-sub);
-  opacity: 0.5;
-}
-
-/* ==========================================
-   サンクスページ
-   ========================================== */
-.thanks-section {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: calc(var(--header-height) + var(--spacing-2xl)) var(--spacing-md) var(--spacing-2xl);
-  text-align: center;
-  min-height: 60vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.thanks-section h2 {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.thanks-section p {
-  margin: var(--spacing-md) 0 var(--spacing-xl);
-  color: var(--color-text-sub);
-  line-height: 1.8;
-}
-
-.thanks-section .btn-back {
-  display: inline-block;
-  padding: 12px 32px;
-  background-color: var(--color-primary);
-  color: var(--color-text-on-dark);
-  text-decoration: none;
-  border-radius: var(--radius-sm);
-  font-weight: 600;
-  transition: background-color var(--transition);
-}
-
-.thanks-section .btn-back:hover {
-  background-color: var(--color-primary-light);
 }
 
 /* ==========================================
@@ -754,8 +672,12 @@ section {
     padding: var(--spacing-md) var(--spacing-sm);
   }
 
-  .contact-form {
+  .contact-mail-card {
     padding: var(--spacing-md);
+  }
+
+  .contact-mail-address {
+    font-size: var(--font-size-lg);
   }
 
   .site-footer .footer-main {
